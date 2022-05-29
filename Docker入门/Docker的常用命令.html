@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker 的常用命令 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Docker 的常用命令列出本机上的所有镜像1docker image ls  删除本地镜像1docker rmi [-f] &lt;镜像ID&gt;  注意：当使用了本地镜像创建了 container,对应的镜像就不能删除（无论对应的 container 是否正在运行），必须先删除 container，或者加上-f参数。 创建新容器并运行1docker container run [可选参数]">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Docker 的常用命令">
+<meta property="og:url" content="http://move-mountains.github.io/Docker%E5%85%A5%E9%97%A8/Docker%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker 的常用命令列出本机上的所有镜像1docker image ls  删除本地镜像1docker rmi [-f] &lt;镜像ID&gt;  注意：当使用了本地镜像创建了 container,对应的镜像就不能删除（无论对应的 container 是否正在运行），必须先删除 container，或者加上-f参数。 创建新容器并运行1docker container run [可选参数]">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-29T15:20:50.000Z">
+<meta property="article:modified_time" content="2022-05-29T15:21:07.355Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://move-mountains.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Docker%E5%85%A5%E9%97%A8/Docker%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" class="article-date">
+  <time class="dt-published" datetime="2022-05-29T15:20:50.000Z" itemprop="datePublished">2022-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker 的常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker-的常用命令"><a href="#Docker-的常用命令" class="headerlink" title="Docker 的常用命令"></a>Docker 的常用命令</h1><h2 id="列出本机上的所有镜像"><a href="#列出本机上的所有镜像" class="headerlink" title="列出本机上的所有镜像"></a>列出本机上的所有镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="删除本地镜像"><a href="#删除本地镜像" class="headerlink" title="删除本地镜像"></a>删除本地镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [-f] &lt;镜像ID&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意：当使用了本地镜像创建了 container,对应的镜像就不能删除（无论对应的 container 是否正在运行），必须先删除 container，或者加上<code>-f</code>参数。</p>
+<h2 id="创建新容器并运行"><a href="#创建新容器并运行" class="headerlink" title="创建新容器并运行"></a>创建新容器并运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container run [可选参数] &lt;镜像名称&gt; [启动后需执行的命令] [ARG参数]</span><br></pre></td></tr></table></figure>
+
+<p><code>[启动后需执行的命令]</code>会覆盖掉 Dockerfile 中定义的执行命令，也可指定可执行文件<br><code>[ARG参数]</code>同理，也是覆盖 Dockerfile 中定义的 ARG 参数的值，但只能覆盖，不能新定义（理论上新定义的 ARG 参数即使生效也不会在 Dockerfile 中起作用）</p>
+<p>常用可选参数列表如下。</p>
+<ul>
+<li>-d: 后台运行容器，并返回容器ID；</li>
+<li>-P: 随机端口映射，容器内部端口随机映射到主机的端口（在 Dockerfile 中的 EXPOSE 的端口列表中选择，若没有 EXPOSE 过<strong>大概会全随机？</strong>）</li>
+<li>-p: 指定端口映射，格式为：主机(宿主)端口:容器端口。可指定多个端口映射，如<code>docker run -p 8022:22 -p 8023:23 hello-world</code></li>
+<li>–name&#x3D;”容器名称”: 为容器指定一个名称；</li>
+<li>-m :设置容器使用内存最大值；</li>
+<li>-i: 以交互模式运行容器，通常与 -t 同时使用；</li>
+<li>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</li>
+</ul>
+<h2 id="创建新容器并启动，并进入容器内的命令行"><a href="#创建新容器并启动，并进入容器内的命令行" class="headerlink" title="创建新容器并启动，并进入容器内的命令行"></a>创建新容器并启动，并进入容器内的命令行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container run -it &lt;镜像名称&gt; /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看正在运行的容器的日志-shell-的标准输出"><a href="#查看正在运行的容器的日志-shell-的标准输出" class="headerlink" title="查看正在运行的容器的日志(shell 的标准输出)"></a>查看正在运行的容器的日志(shell 的标准输出)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container logs &lt;containerID&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入正在运行的容器的命令行"><a href="#进入正在运行的容器的命令行" class="headerlink" title="进入正在运行的容器的命令行"></a>进入正在运行的容器的命令行</h2><p>进入后，等于直接在容器内执行 shell 命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">exec</span> -it &lt;containerID&gt; /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="从正在运行的容器内复制文件到本机"><a href="#从正在运行的容器内复制文件到本机" class="headerlink" title="从正在运行的容器内复制文件到本机"></a>从正在运行的容器内复制文件到本机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">cp</span> &lt;containID&gt;:&lt;/path/to/file&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="列出本机正在运行的所有容器"><a href="#列出本机正在运行的所有容器" class="headerlink" title="列出本机正在运行的所有容器"></a>列出本机正在运行的所有容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="列出本机所有容器，无论是否运行"><a href="#列出本机所有容器，无论是否运行" class="headerlink" title="列出本机所有容器，无论是否运行"></a>列出本机所有容器，无论是否运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">ls</span> --all</span><br></pre></td></tr></table></figure>
+
+<h2 id="正常启动容器"><a href="#正常启动容器" class="headerlink" title="正常启动容器"></a>正常启动容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start &lt;containID&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正常停止容器"><a href="#正常停止容器" class="headerlink" title="正常停止容器"></a>正常停止容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop &lt;containID&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正常重启容器"><a href="#正常重启容器" class="headerlink" title="正常重启容器"></a>正常重启容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart &lt;containID&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="杀死正在运行的容器"><a href="#杀死正在运行的容器" class="headerlink" title="杀死正在运行的容器"></a>杀死正在运行的容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">kill</span> &lt;containID&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> [-f] &lt;containID1&gt; &lt;containID2&gt; ...</span><br></pre></td></tr></table></figure>
+
+<p>参数<code>-f</code>可以强制删除正在运行中的容器</p>
+<h2 id="获取镜像-x2F-容器的元数据"><a href="#获取镜像-x2F-容器的元数据" class="headerlink" title="获取镜像&#x2F;容器的元数据"></a>获取镜像&#x2F;容器的元数据</h2><p>可以用来获取镜像&#x2F;容器的作者。<br>一般元数据有两种参数可以定义：<code>MAINTAINER</code>与<code>LABEL</code>。其中<code>MAINTAINER</code>应该只能用来定义作者，<code>LABEL</code>更灵活。</p>
+<h3 id="MAINTAINER方式构建的镜像获取其元数据"><a href="#MAINTAINER方式构建的镜像获取其元数据" class="headerlink" title="MAINTAINER方式构建的镜像获取其元数据"></a><code>MAINTAINER</code>方式构建的镜像获取其元数据</h3><p>写法应该是固定的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f &#123;&#123;<span class="string">&quot;.Author&quot;</span>&#125;&#125; &lt;镜像ID&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LABEL方式构建的镜像获取其元数据"><a href="#LABEL方式构建的镜像获取其元数据" class="headerlink" title="LABEL方式构建的镜像获取其元数据"></a><code>LABEL</code>方式构建的镜像获取其元数据</h3><p>更加灵活，可以定义更多东西。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f &#123;&#123;<span class="string">&quot;.Config.Labels.&lt;定义的key&gt;&quot;</span>&#125;&#125; &lt;镜像ID&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://move-mountains.github.io/Docker%E5%85%A5%E9%97%A8/Docker%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" data-id="cl3rgo3uy0003i4u59rbg3dea" data-title="Docker 的常用命令" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/28/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
