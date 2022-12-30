@@ -3,20 +3,42 @@
   
     
     <entry>
-      <title><![CDATA[linux 命令行下载工具]]></title>
-      <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BD%BD/</url>
-      <content type="html"><![CDATA[<h1 id="linux-命令行下载工具"><a href="#linux-命令行下载工具" class="headerlink" title="linux 命令行下载工具"></a>linux 命令行下载工具</h1><h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2>]]></content>
+      <title><![CDATA[Typora免费版本安装流程]]></title>
+      <url>/2022/12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<h1 id="Typora免费版本安装流程"><a href="#Typora免费版本安装流程" class="headerlink" title="Typora免费版本安装流程"></a>Typora免费版本安装流程</h1><h2 id="几个背景"><a href="#几个背景" class="headerlink" title="几个背景"></a>几个背景</h2><p>最新的免费版本0.11.18(安装版本是0.11.17，反正差别应该不大)，安装包比较坑爹，只能 install 且不能自己选择安装路径，只能放进 C 盘。</p>
+<p>官网已无法下载到  Typora 的免费版本，安装包只能在各个网盘、网站里翻找。</p>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>安装包下载完成后，直接点击打开，即可安装，安装时会提示是给全部用户安装还是仅给当前用户，可以只选给当前用户安装（应该区别不大）。</p>
+<p><img src="image-20221228164246182.png" alt="image-20221228164246182"></p>
+<p>然后自动读条安装，安装完成后会自动打开，此时将会发生报错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The beta version of typora is expired, please download and install a newer version.</span><br></pre></td></tr></table></figure>
+
+<p>点击确定后自动跳转到 Typora 的官网，且 Typora 不会正常被打开。</p>
+<p>后续所有打开 Typora 的操作都会发生这样的报错并失败（就是官方不让用旧版本了）。</p>
+<h2 id="解除测试版本启动时的版本检查"><a href="#解除测试版本启动时的版本检查" class="headerlink" title="解除测试版本启动时的版本检查"></a>解除测试版本启动时的版本检查</h2><p>其实就是修改注册表权限，禁止 Typora 访问注册表。</p>
+<ol>
+<li><p>windows 下，windows 键 + R，输入 regedit，打开注册表。</p>
+</li>
+<li><p>在 HKEY_CURRENT_USER\SOFTWARE\ 下找到  Typora 目录。</p>
+</li>
+</ol>
+<p><img src="image-20221228165410190.png" alt="image-20221228165410190"></p>
+<ol start="3">
+<li>右键注册表这边的 Typora 目录，打开 Typora 权限设置。将权限修改为拒绝（可以把所有用户访问的权限都设置成拒绝)。</li>
+</ol>
+<p><img src="image-20221228165634806.png" alt="image-20221228165634806"></p>
+<p>设置完成后，Typora 就可以正常启动了。</p>
+]]></content>
       
         <categories>
             
-            <category> linux 操作 </category>
+            <category> 常用软件 </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> linux </tag>
+            <tag> 常用软件 - 下载安装 </tag>
             
         </tags>
         
@@ -70,21 +92,41 @@
     </entry>
     
     <entry>
+      <title><![CDATA[linux 命令行下载工具]]></title>
+      <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BD%BD/</url>
+      <content type="html"><![CDATA[<h1 id="linux-命令行下载工具"><a href="#linux-命令行下载工具" class="headerlink" title="linux 命令行下载工具"></a>linux 命令行下载工具</h1><h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2>]]></content>
+      
+        <categories>
+            
+            <category> linux 操作 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[修改 Linux 的 SSH 访问端口]]></title>
       <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/</url>
       <content type="html"><![CDATA[<h1 id="修改-Linux-的-SSH-访问端口"><a href="#修改-Linux-的-SSH-访问端口" class="headerlink" title="修改 Linux 的 SSH 访问端口"></a>修改 Linux 的 SSH 访问端口</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>起因是腾讯云服务器突然告警说密码被破解，马上又提示有木马植入。<br>        本身服务器里没啥关键内容，但房间里有蟑螂还每天被提醒“家里进了蟑螂”终归是恶心的。<br>        干脆重装系统，再改了 SSH 的默认端口。</p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="检查当前服务器是否已安装-SSH"><a href="#检查当前服务器是否已安装-SSH" class="headerlink" title="检查当前服务器是否已安装 SSH"></a>检查当前服务器是否已安装 SSH</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep ssh</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/rpm%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85SSH.png" alt="rpm检查服务器是否已安装SSH.png"></p>
+<p><img src="rpm%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85SSH.png" alt="rpm检查服务器是否已安装SSH.png"></p>
 <h3 id="找到-SSH-服务的配置文件"><a href="#找到-SSH-服务的配置文件" class="headerlink" title="找到 SSH 服务的配置文件"></a>找到 SSH 服务的配置文件</h3><p>一般是<code>/etc/ssh</code>这个路径下的，配置文件名<code>sshd_config</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/ssh/sshd_conf*</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/sshd_config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="sshd_config配置文件.png"></p>
+<p><img src="sshd_config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="sshd_config配置文件.png"></p>
 <blockquote>
 <p>可能会出现跟图里一样的有两个配置文件的情况，不用管有后缀的，实际起作用的还是<code>sshd_config</code>这个配置文件。</p>
 </blockquote>
 <h3 id="编辑配置文件sshd-config"><a href="#编辑配置文件sshd-config" class="headerlink" title="编辑配置文件sshd_config"></a>编辑配置文件<code>sshd_config</code></h3><p><code>vim sshd_config</code>编辑配置文件，修改里面的<code>Port</code>字段，这一行默认是被注释掉的，需要去掉注释并修改端口。</p>
-<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/%E4%BF%AE%E6%94%B9SSH%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3.png" alt="修改SSH默认端口"></p>
+<p><img src="%E4%BF%AE%E6%94%B9SSH%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3.png" alt="修改SSH默认端口"></p>
 <blockquote>
 <p>SSH 是支持多端口访问的，即可以在保留 22 端口访问的基础上新增可访问的端口，具体操作就是多加一行<code>Port</code>，几行<code>Port</code>就几个 SSH 端口。</p>
 </blockquote>
@@ -113,9 +155,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[hexo解决图片无法正常显示的问题]]></title>
+      <title><![CDATA[Hexo解决图片无法正常显示的问题]]></title>
       <url>/2022/12/29/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<h1 id="Hexo-解决图片无法正常显示的问题"><a href="#Hexo-解决图片无法正常显示的问题" class="headerlink" title="Hexo 解决图片无法正常显示的问题"></a>Hexo 解决图片无法正常显示的问题</h1><p>Hexo 支持 markdown 格式的文件做页面，但通过 hexo 命令生成 html 时，会由于文档中图片路径不对，生成的网页无法正常显示图片。</p>
+      <content type="html"><![CDATA[<h1 id="Hexo解决图片无法正常显示的问题"><a href="#Hexo解决图片无法正常显示的问题" class="headerlink" title="Hexo解决图片无法正常显示的问题"></a>Hexo解决图片无法正常显示的问题</h1><p>Hexo 支持 markdown 格式的文件做页面，但通过 hexo 命令生成 html 时，会由于文档中图片路径不对，生成的网页无法正常显示图片。</p>
 <p>Hexo 本地部署的方式，其实就是把 ${HEXO_HOME}&#x2F;source&#x2F;_post 文件夹下的 markdown 文件转成 html，统一放到 public 文件夹下。而不会复制其中的图片文件，这才导致了错位。</p>
 <p>解决这个问题，需要下载一个插件<code>hexo-renderer-marked</code>。</p>
 <h2 id="下载并启用-hexo-renderer-marked-插件"><a href="#下载并启用-hexo-renderer-marked-插件" class="headerlink" title="下载并启用 hexo-renderer-marked 插件"></a>下载并启用 hexo-renderer-marked 插件</h2><p>先下载安装插件。</p>
@@ -134,7 +176,7 @@
 <p>具体操作就是通过 typora 打开 md 文件，然后设置文章的图片根目录。将其修改为资源文件夹。</p>
 <p>（格式 -&gt; 图样 -&gt; 设置图片根目录 -&gt; 选中同名资源文件夹）</p>
 <p>完成后，typora 会在文章抬头出现这样一行内容：<code>typora-root-url: Hexo解决图片无法正常显示的问题</code></p>
-<p><img src="/image-20221229172022149-16723056247021.png" alt="image-20221229172022149"></p>
+<p><img src="image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
 <p>这个的逻辑主要就是将指定的文件夹视作图片的根目录（原本肯定是 md 文件所在的路径），等于是修改了 md 文件渲染的规则，目前只有 typora  能简单做到对单篇文章的快速修改图片根目录。</p>
 <p>所以此后，图片文件与 md 文件可以视作放在一个文件夹里，本地与远程图片读取可兼容。</p>
 <h3 id="更简便设置文章图片根目录的方法"><a href="#更简便设置文章图片根目录的方法" class="headerlink" title="更简便设置文章图片根目录的方法"></a>更简便设置文章图片根目录的方法</h3><p>可以利用 hexo 的模板文件，在模板的开头直接加上这么一行:<code>typora-root-url:&#123;&#123; title &#125;&#125;</code></p>
@@ -153,36 +195,6 @@
             <tag> Hexo </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title></title>
-      <url>/2022/12/28/Typora%20%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%20%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="Typora-免费版本安装流程"><a href="#Typora-免费版本安装流程" class="headerlink" title="Typora 免费版本安装流程"></a>Typora 免费版本安装流程</h1><h2 id="几个背景"><a href="#几个背景" class="headerlink" title="几个背景"></a>几个背景</h2><p>最新的免费版本0.11.18(安装版本是0.11.17，反正差别应该不大)，安装包比较坑爹，只能 install 且不能自己选择安装路径，只能放进 C 盘。</p>
-<p>官网已无法下载到  Typora 的免费版本，安装包只能在各个网盘、网站里翻找。</p>
-<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>安装包下载完成后，直接点击打开，即可安装，安装时会提示是给全部用户安装还是仅给当前用户，可以只选给当前用户安装（应该区别不大）。</p>
-<p>![image-20221228164246182](Typora 免费版本安装流程&#x2F;image-20221228164246182-16722169700901-16722185955203.png)</p>
-<p>然后自动读条安装，安装完成后会自动打开，此时将会发生报错。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The beta version of typora is expired, please download and install a newer version.</span><br></pre></td></tr></table></figure>
-
-<p>点击确定后自动跳转到 Typora 的官网，且 Typora 不会正常被打开。</p>
-<p>后续所有打开 Typora 的操作都会发生这样的报错并失败（就是官方不让用旧版本了）。</p>
-<h2 id="解除测试版本启动时的版本检查"><a href="#解除测试版本启动时的版本检查" class="headerlink" title="解除测试版本启动时的版本检查"></a>解除测试版本启动时的版本检查</h2><p>其实就是修改注册表权限，禁止 Typora 访问注册表。</p>
-<ol>
-<li><p>windows 下，windows 键 + R，输入 regedit，打开注册表。</p>
-</li>
-<li><p>在 HKEY_CURRENT_USER\SOFTWARE\ 下找到  Typora 目录。</p>
-</li>
-</ol>
-<p>![image-20221228165410190](Typora 免费版本安装流程&#x2F;image-20221228164246182-16722169700901-16722185955203.png)</p>
-<ol start="3">
-<li>右键注册表这边的 Typera 目录，打开 Typera 权限设置。将权限修改为拒绝（可以把所有用户访问的权限都设置成拒绝）。</li>
-</ol>
-<p>![image-20221228165634806](Typora 免费版本安装流程&#x2F;image-20221228164246182-16722169700901-16722185955203.png)</p>
-<p>设置完成后，Typera 就可以正常启动了。</p>
-]]></content>
-      
         
     </entry>
     
@@ -236,7 +248,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>保存后，该文章就将归属于<code>redis</code>分类，所对应的<code>redis</code>分类将会出现在首页。</p>
-<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
+<p><img src="%E5%88%86%E7%B1%BB.png" alt="分类"></p>
 <h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p><strong>标签的创建与添加与分类的步骤基本一致。</strong></p>
 <h4 id="生成“标签”页并添加tpye属性"><a href="#生成“标签”页并添加tpye属性" class="headerlink" title="生成“标签”页并添加tpye属性"></a>生成“标签”页并添加<code>tpye</code>属性</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 
@@ -253,7 +265,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">tags:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>保存后，该文章将拥有<code>redis</code>标签，所对应的<code>redis</code>标签将出现在首页。</p>
-<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
+<p><img src="%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
 ]]></content>
       
         <categories>
@@ -331,9 +343,9 @@
       <content type="html"><![CDATA[<h1 id="Hexo-远程部署"><a href="#Hexo-远程部署" class="headerlink" title="Hexo 远程部署"></a>Hexo 远程部署</h1><p>主要是把 Hexo 网站部署到 GitHub 上去，使用 GitHub Page 的功能直接远程访问博客。</p>
 <h2 id="GitHub-新建仓库"><a href="#GitHub-新建仓库" class="headerlink" title="GitHub 新建仓库"></a>GitHub 新建仓库</h2><p>使用 GitHub Page，必须要用指定的仓库(repository)，即: <strong>用户名.github.io</strong>。<br>访问权限需要是 public。</p>
 <p>对应的仓库建立完成后，应该是可以直接访问 GitHub Page 的默认网站的，网站路径:<strong>用户名.github.io</strong> 。</p>
-<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2/GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
+<p><img src="GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
 <h2 id="修改-Hexo-配置，设置上传到-GitHub-的路径"><a href="#修改-Hexo-配置，设置上传到-GitHub-的路径" class="headerlink" title="修改 Hexo 配置，设置上传到 GitHub 的路径"></a>修改 Hexo 配置，设置上传到 GitHub 的路径</h2><p>打开 Hexo 的配置文件<code>_config.yml</code>,找到<code>deploy</code>这一块，配置上新建的 GitHub 仓库的 url。</p>
-<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
+<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
 <blockquote>
 <p>具体上传到哪个分支、 GitHub Page 怎么选择分支还没研究过</p>
 </blockquote>
@@ -359,37 +371,6 @@
         <tags>
             
             <tag> Hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ELK 日志分析系统]]></title>
-      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/</url>
-      <content type="html"><![CDATA[<h1 id="ELK-日志分析系统"><a href="#ELK-日志分析系统" class="headerlink" title="ELK 日志分析系统"></a>ELK 日志分析系统</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
-<li>Elasticsearch: 即 ES，Elastic Stack核心的分布式搜索和分析引擎,是一个基于Lucene、分布式、通过Restful方式进行交互的近实时搜索平台框架，在 ELK 里定位类似数据库，它的特点就是搜索与分析极快。</li>
-<li>Kibana: ES 的分析及可视化平台，也可用于操纵 ES 里的数据，定位类似 Navicat</li>
-<li>Logstash: 服务器端数据处理管道，可以从多个来源（文件、数据库等）<strong>采集</strong>、<strong>转换</strong>数据，再将数据发送到指定的“存储库”（可以是文件、数据库、ES，甚至仅仅是控制台）去。</li>
-<li>Filebeat: 转发和集中日志数据的<strong>轻量级</strong>传送工具，可以监控日志文件，将日志事件（即变化）发送给 Elasticsearch 或 LogStash。<ul>
-<li>Filebeat 本身属于一种 Beat，Beat 是啥后续还得研究研究。<br>传统的 ELK 只有 Elasticsearch，Kibana，Logstash 三项（ELK 就是这三个组件的首字母合成），Filebeat 是后面出现的用于替代 LogStash 的数据收集功能的工具，Filebeat 的特点就在于<strong>轻量</strong>。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> ELK日志采集 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> ELK </tag>
-            
-            <tag> Kibana </tag>
             
         </tags>
         
@@ -563,18 +544,49 @@
     </entry>
     
     <entry>
+      <title><![CDATA[ELK 日志分析系统]]></title>
+      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/</url>
+      <content type="html"><![CDATA[<h1 id="ELK-日志分析系统"><a href="#ELK-日志分析系统" class="headerlink" title="ELK 日志分析系统"></a>ELK 日志分析系统</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li>Elasticsearch: 即 ES，Elastic Stack核心的分布式搜索和分析引擎,是一个基于Lucene、分布式、通过Restful方式进行交互的近实时搜索平台框架，在 ELK 里定位类似数据库，它的特点就是搜索与分析极快。</li>
+<li>Kibana: ES 的分析及可视化平台，也可用于操纵 ES 里的数据，定位类似 Navicat</li>
+<li>Logstash: 服务器端数据处理管道，可以从多个来源（文件、数据库等）<strong>采集</strong>、<strong>转换</strong>数据，再将数据发送到指定的“存储库”（可以是文件、数据库、ES，甚至仅仅是控制台）去。</li>
+<li>Filebeat: 转发和集中日志数据的<strong>轻量级</strong>传送工具，可以监控日志文件，将日志事件（即变化）发送给 Elasticsearch 或 LogStash。<ul>
+<li>Filebeat 本身属于一种 Beat，Beat 是啥后续还得研究研究。<br>传统的 ELK 只有 Elasticsearch，Kibana，Logstash 三项（ELK 就是这三个组件的首字母合成），Filebeat 是后面出现的用于替代 LogStash 的数据收集功能的工具，Filebeat 的特点就在于<strong>轻量</strong>。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> ELK日志采集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ELK </tag>
+            
+            <tag> Kibana </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[idea 关联 tomcat]]></title>
       <url>/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/</url>
-      <content type="html"><![CDATA[<h1 id="idea-关联-tomcat"><a href="#idea-关联-tomcat" class="headerlink" title="idea 关联 tomcat"></a>idea 关联 tomcat</h1><h2 id="配置默认-tomcat"><a href="#配置默认-tomcat" class="headerlink" title="配置默认 tomcat"></a>配置默认 tomcat</h2><p>打开一个项目，选择 Edit Configurations 按钮。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-Edit_Configurations.png" alt="idea配置tomcat-Edit_Configurations.png"></p>
-<p>配置模板 tomcat 配置。<br>Templates -&gt; Tomcat Server -&gt; Local<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E9%80%89%E6%8B%A9Tomcat_Template.png" alt="idea配置tomcat-选择Tomcat_Template.png"></p>
-<p>指定 Tomcat Server 的路径<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E6%8C%87%E5%AE%9ATomcat%E8%B7%AF%E5%BE%84.png" alt="idea配置tomcat-指定Tomcat路径.png"></p>
-<p>完成后即可保存，Tomcat 的模板配置完成。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E9%85%8D%E7%BD%AETomcat_Template%E5%AE%8C%E6%88%90.png" alt="idea配置tomcat-配置Tomcat_Template完成.png"></p>
+      <content type="html"><![CDATA[<h1 id="idea-关联-tomcat"><a href="#idea-关联-tomcat" class="headerlink" title="idea 关联 tomcat"></a>idea 关联 tomcat</h1><h2 id="配置默认-tomcat"><a href="#配置默认-tomcat" class="headerlink" title="配置默认 tomcat"></a>配置默认 tomcat</h2><p>打开一个项目，选择 Edit Configurations 按钮。<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-Edit_Configurations.png" alt="idea配置tomcat-Edit_Configurations.png"></p>
+<p>配置模板 tomcat 配置。<br>Templates -&gt; Tomcat Server -&gt; Local<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E9%80%89%E6%8B%A9Tomcat_Template.png" alt="idea配置tomcat-选择Tomcat_Template.png"></p>
+<p>指定 Tomcat Server 的路径<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E6%8C%87%E5%AE%9ATomcat%E8%B7%AF%E5%BE%84.png" alt="idea配置tomcat-指定Tomcat路径.png"></p>
+<p>完成后即可保存，Tomcat 的模板配置完成。<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E9%85%8D%E7%BD%AETomcat_Template%E5%AE%8C%E6%88%90.png" alt="idea配置tomcat-配置Tomcat_Template完成.png"></p>
 <h2 id="一些知识点"><a href="#一些知识点" class="headerlink" title="一些知识点"></a>一些知识点</h2><h3 id="idea-下部署项目的访问路径指定"><a href="#idea-下部署项目的访问路径指定" class="headerlink" title="idea 下部署项目的访问路径指定"></a>idea 下部署项目的访问路径指定</h3><p>tomcat 启动后，会自动读取 webapp 路径下的所有文件夹，每一个文件夹它都会视作一个项目，且从 webapps 开始的文件夹路径就是这个项目的访问路径。</p>
 <blockquote>
 <p>如 webapp 下有一个叫<code>bitTemp</code>的文件夹，则 tomcat 启动后，就可以通过<code>http://localhost:8080/bitTemp</code>这个路径访问这个 bitTemp 项目，同理，如果这个文件夹多套了一层，实际路径变成<code>$&#123;TOMCAT_HOME&#125;/webapps/biteTemp/bitTemp2</code>，则需要通过<code>http://localhost:8080/bitTemp/bitTemp</code>来访问原先的页面。即只看文件夹的名称与路径。</p>
 </blockquote>
 <p>idea 部署 tomcat 项目，实际上就是把生成的 target 包复制到 tomcat 的 webapp 下，而决定复制到 webapps 下的文件名的就是<code>Application context</code>这个参数。</p>
-<p><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E4%B8%8B%E7%9A%84Application_context%E6%8C%87%E5%AE%9A.png" alt="idea下的Application_context指定.png"></p>
+<p><img src="idea%E4%B8%8B%E7%9A%84Application_context%E6%8C%87%E5%AE%9A.png" alt="idea下的Application_context指定.png"></p>
 <h3 id="Deployment-里，war包与war-exploded包部署的区别"><a href="#Deployment-里，war包与war-exploded包部署的区别" class="headerlink" title="Deployment 里，war包与war exploded包部署的区别"></a>Deployment 里，<code>war</code>包与<code>war exploded</code>包部署的区别</h3><ul>
 <li><code>war</code>模式可看做发布模式，将成果先打成 war 包，再发布到 tomcat 里。</li>
 <li><code>war exploded</code>模式就是让项目在编译完成后，使 tomcat 直接来 target 路径读取整个项目文件，无需 war 包，也无需移动文件。<ul>
@@ -584,9 +596,9 @@
 </ul>
 <p>实际用下来不使用热部署的话，两种方式区别其实不大</p>
 <blockquote>
-<p>要支持热部署，tomcat 本身还需要做一定设置。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"><br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"></p>
+<p>要支持热部署，tomcat 本身还需要做一定设置。<br><img src="idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"><br><img src="idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"></p>
 </blockquote>
-<h3 id="windows-下-idea-控制台的-tomcat-日志中中文乱码"><a href="#windows-下-idea-控制台的-tomcat-日志中中文乱码" class="headerlink" title="windows 下 idea 控制台的 tomcat 日志中中文乱码"></a>windows 下 idea 控制台的 tomcat 日志中中文乱码</h3><p>tomcat 日志的编码问题，调整一下 tomcat 日志的配置文件即可。<br>日志配置文件路径为<code>$&#123;TOMCAT_HOME&#125;/conf/logging.properties</code>。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/windows%E4%B8%8B%E4%BF%AE%E6%94%B9tomcat%E6%97%A5%E5%BF%97%E7%BC%96%E7%A0%81.png" alt="windows下修改tomcat日志编码.png"></p>
+<h3 id="windows-下-idea-控制台的-tomcat-日志中中文乱码"><a href="#windows-下-idea-控制台的-tomcat-日志中中文乱码" class="headerlink" title="windows 下 idea 控制台的 tomcat 日志中中文乱码"></a>windows 下 idea 控制台的 tomcat 日志中中文乱码</h3><p>tomcat 日志的编码问题，调整一下 tomcat 日志的配置文件即可。<br>日志配置文件路径为<code>$&#123;TOMCAT_HOME&#125;/conf/logging.properties</code>。<br><img src="windows%E4%B8%8B%E4%BF%AE%E6%94%B9tomcat%E6%97%A5%E5%BF%97%E7%BC%96%E7%A0%81.png" alt="windows下修改tomcat日志编码.png"></p>
 ]]></content>
       
         <categories>
@@ -607,7 +619,7 @@
     <entry>
       <title><![CDATA[windows 下下载安装部署 tomcat]]></title>
       <url>/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/windwos%E4%B8%8Btomcat%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
-      <content type="html"><![CDATA[<h1 id="windows-下下载安装部署-tomcat"><a href="#windows-下下载安装部署-tomcat" class="headerlink" title="windows 下下载安装部署 tomcat"></a>windows 下下载安装部署 tomcat</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官方链接:<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a><br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/windwos%E4%B8%8Btomcat%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/tomcat%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD.png" alt="tomcat官网下载.png"></p>
+      <content type="html"><![CDATA[<h1 id="windows-下下载安装部署-tomcat"><a href="#windows-下下载安装部署-tomcat" class="headerlink" title="windows 下下载安装部署 tomcat"></a>windows 下下载安装部署 tomcat</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官方链接:<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a><br><img src="tomcat%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD.png" alt="tomcat官网下载.png"></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载可得到一个 zip 压缩包，找个路径解压一下，解压得到的整个文件夹就是 tomcat 的本体，可直接使用。</p>
 ]]></content>
       
@@ -714,6 +726,29 @@
     </entry>
     
     <entry>
+      <title><![CDATA[logStash]]></title>
+      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/</url>
+      <content type="html"><![CDATA[<h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> ELK日志采集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ELK </tag>
+            
+            <tag> logStash </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux 版 Kibana 部署与踩坑]]></title>
       <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/</url>
       <content type="html"><![CDATA[<h1 id="Linux-版-Kibana-部署与踩坑"><a href="#Linux-版-Kibana-部署与踩坑" class="headerlink" title="Linux 版 Kibana 部署与踩坑"></a>Linux 版 Kibana 部署与踩坑</h1><p>实验版本为 7.13.4。<br>主要是与 ES 的版本配套。</p>
@@ -752,29 +787,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[logStash]]></title>
-      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/</url>
-      <content type="html"><![CDATA[<h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> ELK日志采集 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> ELK </tag>
-            
-            <tag> logStash </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Nginx 的安装与部署]]></title>
       <url>/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
       <content type="html"><![CDATA[<h1 id="Nginx-的安装与部署"><a href="#Nginx-的安装与部署" class="headerlink" title="Nginx 的安装与部署"></a>Nginx 的安装与部署</h1><p>参考链接: <a href="https://www.cnblogs.com/lywJ/p/10710361.html">https://www.cnblogs.com/lywJ/p/10710361.html</a></p>
@@ -801,7 +813,7 @@
 <blockquote>
 <p>好像确实有不通过源码包，直接安装的方法，之后研究下。</p>
 </blockquote>
-<h3 id="上传并解压"><a href="#上传并解压" class="headerlink" title="上传并解压"></a>上传并解压</h3><p>测试版本用的是稳定版本 nginx-1.20.2，上传压缩包至服务器，路径随意（只是源码包，编译出来后的才是部署本体）。<br><img src="/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png" alt="nginx压缩包.png"><br>直接解压。</p>
+<h3 id="上传并解压"><a href="#上传并解压" class="headerlink" title="上传并解压"></a>上传并解压</h3><p>测试版本用的是稳定版本 nginx-1.20.2，上传压缩包至服务器，路径随意（只是源码包，编译出来后的才是部署本体）。<br><img src="nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png" alt="nginx压缩包.png"><br>直接解压。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.20.2.tar.gz</span><br></pre></td></tr></table></figure>
 
 <h3 id="编译并部署"><a href="#编译并部署" class="headerlink" title="编译并部署"></a>编译并部署</h3><p>先创建一下存放临时文件的文件夹，下一个步骤会用到。</p>
@@ -813,13 +825,13 @@
 <blockquote>
 <p><code>\</code> 其实只是续写标识符，表明这条命令没写完，下一行接着写，所以本质上上面这一块只是一条命令。<br><code>--prefix=/usr/local/nginx</code>这一行指定了编译生成的 nginx 部署成果的路径，有必要的话可以改。<br>后续跟着的所有参数其实都是需要添加的 nginx 的功能（类似 plugin）。<br>最后一行的<code>--with-stream</code>非常必要，用于转发各种 TCP，UDP 请求的核心，<strong>内外网映射数据库端口</strong>就需要这个。</p>
 </blockquote>
-<p>执行完上述命令后，会在当前目录下看到一个<code>Makefile</code>文件，具体作用不太清楚，反正跟编译有关。<br><img src="/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/%E7%94%9F%E6%88%90Makefile.png" alt="生成Makefile.png"><br>执行<code>make</code>命令，执行编译，成功后再执行<code>make install</code>安装部署 nginx 成果。</p>
+<p>执行完上述命令后，会在当前目录下看到一个<code>Makefile</code>文件，具体作用不太清楚，反正跟编译有关。<br><img src="%E7%94%9F%E6%88%90Makefile.png" alt="生成Makefile.png"><br>执行<code>make</code>命令，执行编译，成功后再执行<code>make install</code>安装部署 nginx 成果。</p>
 <blockquote>
 <p>仅仅执行一个 <code>make</code> 命令，什么文件也不会生成。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<p><code>make install</code>执行完成后，nginx 即部署完成，可以进入安装目录启动 nginx。<br><img src="/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png" alt="nginx部署完成.png"></p>
+<p><code>make install</code>执行完成后，nginx 即部署完成，可以进入安装目录启动 nginx。<br><img src="nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png" alt="nginx部署完成.png"></p>
 <h3 id="编译过程可能遇到的报错"><a href="#编译过程可能遇到的报错" class="headerlink" title="编译过程可能遇到的报错"></a>编译过程可能遇到的报错</h3><h4 id="PCRE-library"><a href="#PCRE-library" class="headerlink" title="PCRE library"></a>PCRE library</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure: error: the HTTP rewrite module requires the PCRE library.</span><br><span class="line">You can either do not enable the modules, or install the OpenSSL library</span><br><span class="line">into the system, or build the OpenSSL library statically from the source</span><br><span class="line">with nginx by using --with-openssl=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
 
 <p>这个报错的原因是少了 PCRE library，需要再安装一下。<br>腾讯云上可以 yum 方式安装</p>
@@ -848,7 +860,7 @@
 <h2 id="常用的一些命令"><a href="#常用的一些命令" class="headerlink" title="常用的一些命令"></a>常用的一些命令</h2><h3 id="测试命令-nginx-t"><a href="#测试命令-nginx-t" class="headerlink" title="测试命令:nginx -t"></a>测试命令:<code>nginx -t</code></h3><p>可以用于验证修改了<code>nginx.conf</code>文件后，有没有严重错误会导致 nginx 启动失败。<br>成功的例子如下。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-4-centos sbin]# cd /usr/local/nginx/sbin</span><br><span class="line">[root@VM-16-4-centos sbin]# ./nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
 
-<h3 id="查询版本号与已安装的扩展-nginx-V"><a href="#查询版本号与已安装的扩展-nginx-V" class="headerlink" title="查询版本号与已安装的扩展: nginx -V"></a>查询版本号与已安装的扩展: <code>nginx -V</code></h3><p>注意大写。执行后可以看到 nginx 目前已有的扩展（可以用来检查是不是少了<code>--with-stream</code>这一项）。<br><img src="/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx-V%E5%91%BD%E4%BB%A4.png" alt="nginx-V命令.png"></p>
+<h3 id="查询版本号与已安装的扩展-nginx-V"><a href="#查询版本号与已安装的扩展-nginx-V" class="headerlink" title="查询版本号与已安装的扩展: nginx -V"></a>查询版本号与已安装的扩展: <code>nginx -V</code></h3><p>注意大写。执行后可以看到 nginx 目前已有的扩展（可以用来检查是不是少了<code>--with-stream</code>这一项）。<br><img src="nginx-V%E5%91%BD%E4%BB%A4.png" alt="nginx-V命令.png"></p>
 ]]></content>
       
         <categories>

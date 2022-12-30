@@ -223,16 +223,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="idea-关联-tomcat"><a href="#idea-关联-tomcat" class="headerlink" title="idea 关联 tomcat"></a>idea 关联 tomcat</h1><h2 id="配置默认-tomcat"><a href="#配置默认-tomcat" class="headerlink" title="配置默认 tomcat"></a>配置默认 tomcat</h2><p>打开一个项目，选择 Edit Configurations 按钮。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-Edit_Configurations.png" alt="idea配置tomcat-Edit_Configurations.png"></p>
-<p>配置模板 tomcat 配置。<br>Templates -&gt; Tomcat Server -&gt; Local<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E9%80%89%E6%8B%A9Tomcat_Template.png" alt="idea配置tomcat-选择Tomcat_Template.png"></p>
-<p>指定 Tomcat Server 的路径<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E6%8C%87%E5%AE%9ATomcat%E8%B7%AF%E5%BE%84.png" alt="idea配置tomcat-指定Tomcat路径.png"></p>
-<p>完成后即可保存，Tomcat 的模板配置完成。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E9%85%8D%E7%BD%AEtomcat-%E9%85%8D%E7%BD%AETomcat_Template%E5%AE%8C%E6%88%90.png" alt="idea配置tomcat-配置Tomcat_Template完成.png"></p>
+        <h1 id="idea-关联-tomcat"><a href="#idea-关联-tomcat" class="headerlink" title="idea 关联 tomcat"></a>idea 关联 tomcat</h1><h2 id="配置默认-tomcat"><a href="#配置默认-tomcat" class="headerlink" title="配置默认 tomcat"></a>配置默认 tomcat</h2><p>打开一个项目，选择 Edit Configurations 按钮。<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-Edit_Configurations.png" alt="idea配置tomcat-Edit_Configurations.png"></p>
+<p>配置模板 tomcat 配置。<br>Templates -&gt; Tomcat Server -&gt; Local<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E9%80%89%E6%8B%A9Tomcat_Template.png" alt="idea配置tomcat-选择Tomcat_Template.png"></p>
+<p>指定 Tomcat Server 的路径<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E6%8C%87%E5%AE%9ATomcat%E8%B7%AF%E5%BE%84.png" alt="idea配置tomcat-指定Tomcat路径.png"></p>
+<p>完成后即可保存，Tomcat 的模板配置完成。<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-%E9%85%8D%E7%BD%AETomcat_Template%E5%AE%8C%E6%88%90.png" alt="idea配置tomcat-配置Tomcat_Template完成.png"></p>
 <h2 id="一些知识点"><a href="#一些知识点" class="headerlink" title="一些知识点"></a>一些知识点</h2><h3 id="idea-下部署项目的访问路径指定"><a href="#idea-下部署项目的访问路径指定" class="headerlink" title="idea 下部署项目的访问路径指定"></a>idea 下部署项目的访问路径指定</h3><p>tomcat 启动后，会自动读取 webapp 路径下的所有文件夹，每一个文件夹它都会视作一个项目，且从 webapps 开始的文件夹路径就是这个项目的访问路径。</p>
 <blockquote>
 <p>如 webapp 下有一个叫<code>bitTemp</code>的文件夹，则 tomcat 启动后，就可以通过<code>http://localhost:8080/bitTemp</code>这个路径访问这个 bitTemp 项目，同理，如果这个文件夹多套了一层，实际路径变成<code>$&#123;TOMCAT_HOME&#125;/webapps/biteTemp/bitTemp2</code>，则需要通过<code>http://localhost:8080/bitTemp/bitTemp</code>来访问原先的页面。即只看文件夹的名称与路径。</p>
 </blockquote>
 <p>idea 部署 tomcat 项目，实际上就是把生成的 target 包复制到 tomcat 的 webapp 下，而决定复制到 webapps 下的文件名的就是<code>Application context</code>这个参数。</p>
-<p><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E4%B8%8B%E7%9A%84Application_context%E6%8C%87%E5%AE%9A.png" alt="idea下的Application_context指定.png"></p>
+<p><img src="idea%E4%B8%8B%E7%9A%84Application_context%E6%8C%87%E5%AE%9A.png" alt="idea下的Application_context指定.png"></p>
 <h3 id="Deployment-里，war包与war-exploded包部署的区别"><a href="#Deployment-里，war包与war-exploded包部署的区别" class="headerlink" title="Deployment 里，war包与war exploded包部署的区别"></a>Deployment 里，<code>war</code>包与<code>war exploded</code>包部署的区别</h3><ul>
 <li><code>war</code>模式可看做发布模式，将成果先打成 war 包，再发布到 tomcat 里。</li>
 <li><code>war exploded</code>模式就是让项目在编译完成后，使 tomcat 直接来 target 路径读取整个项目文件，无需 war 包，也无需移动文件。<ul>
@@ -242,9 +242,9 @@
 </ul>
 <p>实际用下来不使用热部署的话，两种方式区别其实不大</p>
 <blockquote>
-<p>要支持热部署，tomcat 本身还需要做一定设置。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"><br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"></p>
+<p>要支持热部署，tomcat 本身还需要做一定设置。<br><img src="idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"><br><img src="idea%E6%94%AF%E6%8C%81%E7%83%AD%E9%83%A8%E7%BD%B2.png" alt="idea支持热部署.png"></p>
 </blockquote>
-<h3 id="windows-下-idea-控制台的-tomcat-日志中中文乱码"><a href="#windows-下-idea-控制台的-tomcat-日志中中文乱码" class="headerlink" title="windows 下 idea 控制台的 tomcat 日志中中文乱码"></a>windows 下 idea 控制台的 tomcat 日志中中文乱码</h3><p>tomcat 日志的编码问题，调整一下 tomcat 日志的配置文件即可。<br>日志配置文件路径为<code>$&#123;TOMCAT_HOME&#125;/conf/logging.properties</code>。<br><img src="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/windows%E4%B8%8B%E4%BF%AE%E6%94%B9tomcat%E6%97%A5%E5%BF%97%E7%BC%96%E7%A0%81.png" alt="windows下修改tomcat日志编码.png"></p>
+<h3 id="windows-下-idea-控制台的-tomcat-日志中中文乱码"><a href="#windows-下-idea-控制台的-tomcat-日志中中文乱码" class="headerlink" title="windows 下 idea 控制台的 tomcat 日志中中文乱码"></a>windows 下 idea 控制台的 tomcat 日志中中文乱码</h3><p>tomcat 日志的编码问题，调整一下 tomcat 日志的配置文件即可。<br>日志配置文件路径为<code>$&#123;TOMCAT_HOME&#125;/conf/logging.properties</code>。<br><img src="windows%E4%B8%8B%E4%BF%AE%E6%94%B9tomcat%E6%97%A5%E5%BF%97%E7%BC%96%E7%A0%81.png" alt="windows下修改tomcat日志编码.png"></p>
 
     </div>
 
@@ -267,8 +267,8 @@
       <i class="fa fa-chevron-left"></i> windows 下下载安装部署 tomcat
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/12/26/redis/redis%E9%83%A8%E7%BD%B2/" rel="next" title="redis 部署">
-      redis 部署 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/" rel="next" title="ELK 日志分析系统">
+      ELK 日志分析系统 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -349,13 +349,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
