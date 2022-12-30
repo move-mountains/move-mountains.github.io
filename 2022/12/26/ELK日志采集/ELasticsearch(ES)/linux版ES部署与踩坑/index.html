@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"move-mountains.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="linux 版 ES 部署与踩坑实验版本为 7.13.4。不使用最新版本的原因是: 最新版本强制要求 jdk17 及以上，但现在只想用 jdk1.8 ES 启动与停止前台启动，窗口阻塞，ctrl+C 退出则 ES 也停止服务。 1&#x2F;opt&#x2F;elk&#x2F;elasticsearch&#x2F;elasticsearch&#x2F;elasticsearch-7.13.4&#x2F;bin&#x2F;elasticsearch  后台启动，这个停">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 版 ES 部署与踩坑">
+<meta property="og:url" content="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELasticsearch(ES)/linux%E7%89%88ES%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="linux 版 ES 部署与踩坑实验版本为 7.13.4。不使用最新版本的原因是: 最新版本强制要求 jdk17 及以上，但现在只想用 jdk1.8 ES 启动与停止前台启动，窗口阻塞，ctrl+C 退出则 ES 也停止服务。 1&#x2F;opt&#x2F;elk&#x2F;elasticsearch&#x2F;elasticsearch&#x2F;elasticsearch-7.13.4&#x2F;bin&#x2F;elasticsearch  后台启动，这个停">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-26T15:20:19.000Z">
+<meta property="article:modified_time" content="2022-12-26T06:01:44.576Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ELK">
+<meta property="article:tag" content="Elassticsearch">
+<meta property="article:tag" content="ES">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELasticsearch(ES)/linux%E7%89%88ES%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>linux 版 ES 部署与踩坑 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELasticsearch(ES)/linux%E7%89%88ES%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux 版 ES 部署与踩坑
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:44" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="linux-版-ES-部署与踩坑"><a href="#linux-版-ES-部署与踩坑" class="headerlink" title="linux 版 ES 部署与踩坑"></a>linux 版 ES 部署与踩坑</h1><p>实验版本为 7.13.4。<br>不使用最新版本的原因是: 最新版本强制要求 jdk17 及以上，但现在只想用 jdk1.8</p>
+<h2 id="ES-启动与停止"><a href="#ES-启动与停止" class="headerlink" title="ES 启动与停止"></a>ES 启动与停止</h2><p>前台启动，窗口阻塞，ctrl+C 退出则 ES 也停止服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/elk/elasticsearch/elasticsearch/elasticsearch-7.13.4/bin/elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p>后台启动，这个停止大概需要 kill 进程了吧。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/elk/elasticsearch/elasticsearch/elasticsearch-7.13.4/bin/elasticsearch -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="ES-启动脚本部分解析"><a href="#ES-启动脚本部分解析" class="headerlink" title="ES 启动脚本部分解析"></a>ES 启动脚本部分解析</h2><p>启动脚本其实意外的挺简单，主要是注释非常完善。</p>
+<h2 id="linux-部署-ES-踩坑记录"><a href="#linux-部署-ES-踩坑记录" class="headerlink" title="linux 部署 ES 踩坑记录"></a>linux 部署 ES 踩坑记录</h2><ol>
+<li>7.13.4 版本的 ES 解压后自带一个 JDK，且 ES 官方推荐使用这个 JDK 来启动 ES，而为了不占用<code>JAVA_HOME</code>这个变量（用了这个，整个用户的默认 JDK 就变了），ES 会优先使用<code>ES_JAVA_HOME</code>这个变量，且只需要配置这么一个变量（<code>PATH</code>什么的都不用改）。</li>
+<li>据说 ES 与 Kibana 的版本必须一致（精确到小版本号）才能正常使用，这个没实际尝试过。</li>
+<li>ES 不允许用 root 用户启动，因此必须新建一个用户专门用于 ELK 服务。</li>
+</ol>
+<h3 id="启动报错"><a href="#启动报错" class="headerlink" title="启动报错"></a>启动报错</h3><p>当前用户允许拥有的虚拟内存的大小不足。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootstrap check failure [1] of [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</span><br></pre></td></tr></table></figure>
+
+<p>需要调整<code>vm.max_map_count</code>的值。该调整需要 root 权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行调整</span></span><br><span class="line">[root@VM-12-3-centos opt]# sysctl -w vm.max_map_count=262144</span><br><span class="line">vm.max_map_count = 262144</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以下都是检验调整是否生效的语句</span></span><br><span class="line">[root@VM-12-3-centos opt]# cat /proc/sys/vm/max_map_count</span><br><span class="line">262144</span><br><span class="line">[root@VM-12-3-centos opt]# sysctl -a|grep vm.max_map_count</span><br><span class="line">vm.max_map_count = 262144</span><br><span class="line">[root@VM-12-3-centos opt]# </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>max_map_count</code>文件包含 限制一个进程可以拥有的 VMA ( 虚拟内存区域 ) 的数量 。<br>虚拟内存区域是一个连续的虚拟地址空间区域。在进程的生命周期中，每当程序尝试在内存中映射文件，链接到共享内存段，或者分配堆空间的时候，这些区域将被创建。<br>调优这个值将限制进程可拥有 VMA 的数量。 限制一个进程拥有 VMA 的总数可能导致应用程序出错 ， 因为当进程达到了 VMA 上线但又只能释放少量的内存给其他的内核进程使用时，操作系统会抛出内存不足的错误 。如果你的操作系统在 NORMAL 区域仅占用少量的内存，那么调低这个值可以帮助释放内存给内核用。</p>
+</blockquote>
+<p>初始堆大小不等于最大堆大小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootstrap check failure [1] of [2]: initial heap size [1073741824] not equal to maximum heap size [2147483648]; this can cause resize pauses</span><br></pre></td></tr></table></figure>
+
+<p>本质是自己改配置改出来的问题，<code>config/jvm.options</code>中的<code>-Xms</code>与<code>-Xmx</code>的值不一致。<br>这两个值的默认值同为 4G, 内存足够全用默认值的话其实不会出错。</p>
+<p>缺少默认配置<code>discovery settings</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootstrap check failure [1] of [1]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured</span><br></pre></td></tr></table></figure>
+
+<p>看提示可知：缺少默认配置，至少需要配置<code>discovery.seed_hosts</code>，<code>discovery.seed_providers</code>，<code>cluster.initial_master_nodes</code>中的一个参数，<strong>但实际修复过程发现远不止这一个参数</strong>。</p>
+<ul>
+<li>discovery.seed_hosts:  集群主机列表,单机模式的话就在这里填一个节点即可</li>
+<li>discovery.seed_providers: 基于配置文件配置集群主机列表</li>
+<li>cluster.initial_master_nodes: 启动时初始化的参与选主的 node，集群模式需要。与配置文件中的<code>node</code>这一项关联。</li>
+</ul>
+<p>注意，即便是单机模式，也要当成“只有一个节点的集群”来配，否则启动后会报以下错误。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2022-05-30T19:56:19,533][WARN ][o.e.c.c.ClusterFormationFailureHelper] [VM-12-3-centos] master not discovered yet, this node has not previously joined a bootstrapped (v7+) cluster, and [cluster.initial_master_nodes] is empty on this node: have discovered [&#123;VM-12-3-centos&#125;&#123;pFna7wofS06Ud2gCFcaD-g&#125;&#123;Zdf5RYJkTjKVAPLm2kt9zw&#125;&#123;10.0.12.3&#125;&#123;10.0.12.3:9300&#125;&#123;cdfhilmrstw&#125;]; discovery will continue using [127.0.0.1:9300] from hosts providers and [&#123;VM-12-3-centos&#125;&#123;pFna7wofS06Ud2gCFcaD-g&#125;&#123;Zdf5RYJkTjKVAPLm2kt9zw&#125;&#123;10.0.12.3&#125;&#123;10.0.12.3:9300&#125;&#123;cdfhilmrstw&#125;] from last-known cluster state; node term 0, last-accepted version 0 in term 0</span><br></pre></td></tr></table></figure>
+
+<p>单机模式的参数如下所示。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 集群名称，自定义，同一网段下有多个 ES 集群，则用这个名称用于区分</span></span><br><span class="line"><span class="attr">cluster.name:</span> <span class="string">es-cluste</span></span><br><span class="line"><span class="comment"># 节点名称，可自定义，下面有用</span></span><br><span class="line"><span class="attr">node.name:</span> <span class="string">node-1</span></span><br><span class="line"><span class="comment"># 数据文件的路径</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">/opt/elk/elasticsearch/elasticsearch/elasticsearch-7.13.4/data</span></span><br><span class="line"><span class="comment"># 日志文件的路径</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">/opt/elk/elasticsearch/elasticsearch/elasticsearch-7.13.4/logs</span></span><br><span class="line"><span class="comment"># 访问 IP 白名单，名单内的才允许访问，默认 localhost，即本机以外均不许连接，置为 0.0.0.0 即表示不对 IP 做任何限制</span></span><br><span class="line"><span class="attr">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"><span class="comment"># ES 的访问端口号，默认 9200</span></span><br><span class="line"><span class="attr">http.port:</span> <span class="number">9201</span></span><br><span class="line"><span class="comment"># 貌似是集群内的通信用端口。</span></span><br><span class="line"><span class="attr">transport.port:</span> <span class="number">9300</span></span><br><span class="line"><span class="comment"># 集群内的节点的 IP 列表</span></span><br><span class="line"><span class="attr">discovery.seed_hosts:</span> [<span class="string">&quot;127.0.0.1&quot;</span>]</span><br><span class="line"><span class="comment"># 集群内，初始主节点的选取范围，选项来自于上面的 node.name</span></span><br><span class="line"><span class="attr">cluster.initial_master_nodes:</span> [<span class="string">&quot;node-1&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ELK/" rel="tag"># ELK</a>
+              <a href="/tags/Elassticsearch/" rel="tag"># Elassticsearch</a>
+              <a href="/tags/ES/" rel="tag"># ES</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/" rel="prev" title="Filebeat 部署与踩坑">
+      <i class="fa fa-chevron-left"></i> Filebeat 部署与踩坑
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/windwos%E4%B8%8Btomcat%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/" rel="next" title="windows 下下载安装部署 tomcat">
+      windows 下下载安装部署 tomcat <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-%E7%89%88-ES-%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91"><span class="nav-number">1.</span> <span class="nav-text">linux 版 ES 部署与踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES-%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="nav-number">1.1.</span> <span class="nav-text">ES 启动与停止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES-%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E9%83%A8%E5%88%86%E8%A7%A3%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">ES 启动脚本部分解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-%E9%83%A8%E7%BD%B2-ES-%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">linux 部署 ES 踩坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99"><span class="nav-number">1.3.1.</span> <span class="nav-text">启动报错</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

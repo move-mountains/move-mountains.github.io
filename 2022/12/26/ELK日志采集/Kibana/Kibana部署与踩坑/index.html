@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"move-mountains.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linux 版 Kibana 部署与踩坑实验版本为 7.13.4。主要是与 ES 的版本配套。 config&#x2F;kibana.yml配置文件内容 官方文档(中文的):https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;cn&#x2F;kibana&#x2F;current&#x2F;settings.html  1234567891011121314151617181920# Kibana 的访问端口号server.por">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 版 Kibana 部署与踩坑">
+<meta property="og:url" content="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux 版 Kibana 部署与踩坑实验版本为 7.13.4。主要是与 ES 的版本配套。 config&#x2F;kibana.yml配置文件内容 官方文档(中文的):https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;cn&#x2F;kibana&#x2F;current&#x2F;settings.html  1234567891011121314151617181920# Kibana 的访问端口号server.por">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-26T15:20:19.000Z">
+<meta property="article:modified_time" content="2022-12-26T06:01:52.589Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ELK">
+<meta property="article:tag" content="Kibana">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Linux 版 Kibana 部署与踩坑 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux 版 Kibana 部署与踩坑
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:52" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux-版-Kibana-部署与踩坑"><a href="#Linux-版-Kibana-部署与踩坑" class="headerlink" title="Linux 版 Kibana 部署与踩坑"></a>Linux 版 Kibana 部署与踩坑</h1><p>实验版本为 7.13.4。<br>主要是与 ES 的版本配套。</p>
+<h2 id="config-kibana-yml配置文件内容"><a href="#config-kibana-yml配置文件内容" class="headerlink" title="config/kibana.yml配置文件内容"></a><code>config/kibana.yml</code>配置文件内容</h2><blockquote>
+<p>官方文档(<strong>中文的</strong>):<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/cn/kibana/current/settings.html">https://www.elastic.co/guide/cn/kibana/current/settings.html</a></p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Kibana 的访问端口号</span></span><br><span class="line"><span class="attr">server.port:</span> <span class="number">5602</span></span><br><span class="line"><span class="comment"># 访问 IP 白名单，默认 localhost，拒绝除本机以外的所有访问，改成 0.0.0.0 以禁用对所有 IP 的限制</span></span><br><span class="line"><span class="attr">server.host:</span> <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment"># 中间一堆东西，目前全都用的默认值，后续再看里面有没有重要的东西</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment"># 指定 kibana 自身的日志输出路径，默认为 STDOUT（控制台输出），必须指定到文件(不能是目录），还不清楚这个日志是否会自动按天分割</span></span><br><span class="line"><span class="comment">## 如果是控制台输出的话，nohup 模式后台启动时如果指定输出到文件，好像也能达到输出日志的目的</span></span><br><span class="line"><span class="attr">logging.dest:</span> <span class="string">/opt/elk/kibana/kibana/kibana-7.13.4-linux-x86_64/logs/kibana.log</span></span><br><span class="line"><span class="comment"># 默认值: false，该值设为 true 时，禁止所有日志输出。</span></span><br><span class="line"><span class="attr">logging.silent:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 默认值: false 该值设为 true 时，禁止除错误信息除外的所有日志输出。</span></span><br><span class="line"><span class="attr">logging.quiet:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 默认值: false 该值设为 true 时，记下所有事件包括系统使用信息和所有请求的日志。</span></span><br><span class="line"><span class="attr">logging.verbose:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 连接的 ES 的节点信息，若是集群，则每个节点都以相同的格式写上去</span></span><br><span class="line"><span class="attr">elasticsearch.hosts:</span> [<span class="string">&quot;http://xx.xxx.xxx.xx:9200&quot;</span>]</span><br><span class="line"><span class="comment"># 可以把页面改成中文，但可能不适应各种教程，教程一般用的还是英文的</span></span><br><span class="line"><span class="attr">i18n.locale:</span> <span class="string">&quot;zh-CN&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h2><p>前台启动，窗口阻塞，ctrl+C 退出则 Kibana 也停止服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/elk/kibana/kibana/kibana-7.13.4-linux-x86_64/bin/kibana</span><br></pre></td></tr></table></figure>
+
+<p>后台启动，这个的停止，目前只能想到用 kill 进程的方式停止。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup /opt/elk/kibana/kibana/kibana-7.13.4-linux-x86_64/bin/kibana &amp;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若在配置文件<code>kibana.yml</code>里不指定输出到文件（即依旧是 STDOUT），在启动时又指定将所有控制台输出写入到指定文件(<code>nohup bin/kibana &gt; logs/kibana.log &amp; tail -f logs/kibana.log</code>)，理论上也可以达输出日志文件的目的。</p>
+</blockquote>
+<h2 id="日常使用"><a href="#日常使用" class="headerlink" title="日常使用"></a>日常使用</h2><p>这又是一大块内容，牵扯了 ES 的使用。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ELK/" rel="tag"># ELK</a>
+              <a href="/tags/Kibana/" rel="tag"># Kibana</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/" rel="prev" title="logStash">
+      <i class="fa fa-chevron-left"></i> logStash
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/" rel="next" title="Filebeat 部署与踩坑">
+      Filebeat 部署与踩坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-%E7%89%88-Kibana-%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91"><span class="nav-number">1.</span> <span class="nav-text">Linux 版 Kibana 部署与踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#config-kibana-yml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">config&#x2F;kibana.yml配置文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="nav-number">1.2.</span> <span class="nav-text">启动与停止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">日常使用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
