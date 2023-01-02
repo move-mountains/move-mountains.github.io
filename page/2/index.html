@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/redis/redis%E9%83%A8%E7%BD%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">ELK 日志分析系统</a>
+            <a href="/2022/12/26/redis/redis%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">redis 部署</a>
         </h2>
 
         <div class="post-meta">
@@ -180,7 +180,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:02:24" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
+              <time title="Created: 2022-12-26 23:20:19 / Modified: 16:45:50" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -188,7 +188,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
+                  <a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a>
                 </span>
             </span>
 
@@ -203,15 +203,153 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="ELK-日志分析系统"><a href="#ELK-日志分析系统" class="headerlink" title="ELK 日志分析系统"></a>ELK 日志分析系统</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
-<li>Elasticsearch: 即 ES，Elastic Stack核心的分布式搜索和分析引擎,是一个基于Lucene、分布式、通过Restful方式进行交互的近实时搜索平台框架，在 ELK 里定位类似数据库，它的特点就是搜索与分析极快。</li>
-<li>Kibana: ES 的分析及可视化平台，也可用于操纵 ES 里的数据，定位类似 Navicat</li>
-<li>Logstash: 服务器端数据处理管道，可以从多个来源（文件、数据库等）<strong>采集</strong>、<strong>转换</strong>数据，再将数据发送到指定的“存储库”（可以是文件、数据库、ES，甚至仅仅是控制台）去。</li>
-<li>Filebeat: 转发和集中日志数据的<strong>轻量级</strong>传送工具，可以监控日志文件，将日志事件（即变化）发送给 Elasticsearch 或 LogStash。<ul>
-<li>Filebeat 本身属于一种 Beat，Beat 是啥后续还得研究研究。<br>传统的 ELK 只有 Elasticsearch，Kibana，Logstash 三项（ELK 就是这三个组件的首字母合成），Filebeat 是后面出现的用于替代 LogStash 的数据收集功能的工具，Filebeat 的特点就在于<strong>轻量</strong>。</li>
+          <h1 id="redis-部署"><a href="#redis-部署" class="headerlink" title="redis 部署"></a>redis 部署</h1><p>redis 支持单机模式、主从复制模式、哨兵模式、cluster集群模式这几种部署方式。<br>单机模式最简单，但是不具备高可用。</p>
+<h2 id="配置-redis-可远程访问"><a href="#配置-redis-可远程访问" class="headerlink" title="配置 redis 可远程访问"></a>配置 redis 可远程访问</h2><p>在<code>redis.conf</code>的配置文件里修改<code># bind 127.0.0.1</code>这一行，改为<code>0.0.0.0</code>，表示支持任意 IP 的访问。</p>
+<h2 id="远程访问-redis"><a href="#远程访问-redis" class="headerlink" title="远程访问 redis"></a>远程访问 redis</h2><p>需要使用<code>redis-cli</code>文件，windows 下是<code>redis-cli.exe</code>，linux 下是<code>redis-cli</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -h 127.0.0.1 -p 6379 -a password</span><br></pre></td></tr></table></figure>
+
+<p>无密码可去掉最后的<code>-a password</code></p>
+<blockquote>
+<p>注意：不允许远程访问 redis 时，使用 redis-cli 尝试连接也不会报错，但会在执行操作的时候报错</p>
+</blockquote>
+<h2 id="单机模式"><a href="#单机模式" class="headerlink" title="单机模式"></a>单机模式</h2><h3 id="windows-下部署"><a href="#windows-下部署" class="headerlink" title="windows 下部署"></a>windows 下部署</h3><p>下载压缩包后解压,解压完即可使用。</p>
+<h3 id="windows-下使用"><a href="#windows-下使用" class="headerlink" title="windows 下使用"></a>windows 下使用</h3><h4 id="windows-下直接使用"><a href="#windows-下直接使用" class="headerlink" title="windows 下直接使用"></a>windows 下直接使用</h4><ol>
+<li>cd 进入 redis 的目录</li>
+<li>打开 cmd 窗口</li>
+<li>执行<code>redis-server.exe redis.windows.conf</code></li>
+</ol>
+<p>这样执行后， redis 服务将在这个 cmd 页面上开启。使用同目录下的<code>redis.windows.conf</code>作为配置文件。<br>当这个 cmd 窗口关闭后，redis 服务就会停止。<br>要让 redis 服务常驻，需要在 windows 下注册服务。</p>
+<h4 id="windows-下注册服务"><a href="#windows-下注册服务" class="headerlink" title="windows 下注册服务"></a>windows 下注册服务</h4><p>以下命令都需要在 redis 的目录下执行，否则需要指定各文件的绝对路径。</p>
+<ol>
+<li>注册服务:<code>redis-server.exe --service-install redis.windows.conf</code></li>
+<li>卸载服务:<code>redis-server --service-uninstall</code></li>
+<li>注册服务后，开启 redis 服务:<code>redis-server --service-start</code></li>
+<li>注册服务后，停止 redis 服务:<code>redis-server --service-stop</code></li>
+</ol>
+<h3 id="linux-下部署"><a href="#linux-下部署" class="headerlink" title="linux 下部署"></a>linux 下部署</h3><p>官网下载路径:<a target="_blank" rel="noopener" href="https://redis.io/download/">https://redis.io/download/</a></p>
+<h4 id="源码打包构建"><a href="#源码打包构建" class="headerlink" title="源码打包构建"></a>源码打包构建</h4><p>压缩包上传解压。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/redis</span><br><span class="line">tar -zxvf redis-4.0.12.tar.gz</span><br><span class="line">cd redis-4.0.12</span><br></pre></td></tr></table></figure>
+
+<p>进入目录执行编译。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>先执行一下<code>make</code>，正常编译完成将输出<code>It&#39;s a good idea to run &#39;make test&#39;</code></p>
+<blockquote>
+<p>执行过程中可能报错，报错原因可能是 redis 依赖的 gcc 版本不够高，已知 redis-4.0.12 版本下可以使用 4.8.5 版本的 gcc 正常编译，但 redis-6.0.9.tar.gz 版本的就不行</p>
+</blockquote>
+<p>编译通过后，再执行正式的构建命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make PREFIX=/opt/redis/redis install</span><br></pre></td></tr></table></figure>
+
+<p><code>PREFIX=/opt/redis/redis</code>指定了安装的可执行文件的路径。成功后可以直接到这个目录下看到一个<code>bin</code>文件夹。理论上应该只有这么一个文件夹。<br>bin 文件夹内的内容如下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@127.0.0.1 bin]# ll</span><br><span class="line">总用量 21892</span><br><span class="line">-rw-r--r-- 1 gdsuser gdsgrp    1149 5月  20 15:59 dump.rdb</span><br><span class="line">-rwxr-xr-x 1 gdsuser gdsgrp 2452792 5月  18 20:08 redis-benchmark</span><br><span class="line">-rwxr-xr-x 1 gdsuser gdsgrp 5778792 5月  18 20:08 redis-check-aof</span><br><span class="line">-rwxr-xr-x 1 gdsuser gdsgrp 5778792 5月  18 20:08 redis-check-rdb</span><br><span class="line">-rwxr-xr-x 1 gdsuser gdsgrp 2618880 5月  18 20:08 redis-cli</span><br><span class="line">lrwxrwxrwx 1 gdsuser gdsgrp      12 5月  18 20:08 redis-sentinel -&gt; redis-server</span><br><span class="line">-rwxr-xr-x 1 gdsuser gdsgrp 5778792 5月  18 20:08 redis-server</span><br></pre></td></tr></table></figure>
+
+<p>各文件的作用如下:</p>
+<ul>
+<li>redis-server：redis 服务器的 daemon 启动程序。</li>
+<li>redis-cli：Redis命令操作工具。当然，也可以 telnet 根据其纯文本协助来操作。</li>
+<li>redis-benchmark：Redis性能测试工具，测试 Redis 在你的系统及你的配置下的读写性能。</li>
+<li>redis-check-aof：更新日志检查。</li>
+<li>redis-check-dump：用于本地数据库检查。</li>
+</ul>
+<p>想自定义配置来运行 redis,需要从 执行过<code>make</code>后的 redis 安装包中复制<code>redis.conf</code>文件过来（执行过<code>make</code>后就会自动生成，所有模板配置文件都能在这个目录下找到，包括哨兵的<code>sentinel.conf</code>）<br>更完整的 redis 配置，可以自己在 bin 的同级目录下建 conf, log, run, data 文件夹。分别用于存放配置文件，日志文件，运行时的 pid 文件，快照与 AOF 文件，然后分别在 redis.conf 文件夹内指定。</p>
+<p>常用的 redis.conf 中的配置</p>
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">daemonize</td>
+<td align="center">yes&#x2F;no</td>
+<td align="center">是否让 redis 在后台运行的，默认为 no ，如果需要在后台运行，把该项的值更改为 yes。</td>
+</tr>
+<tr>
+<td align="center">protected-mode</td>
+<td align="center">yes&#x2F;no</td>
+<td align="center">是否开启保护模式，即禁止除本机以外的 IP 通过网络访问该 redis 节点。如需正常使用，需要置为 no，<strong>注意，若要通过网络访问 redis 节点，还需要同步修改 bind 项的配置</strong></td>
+</tr>
+<tr>
+<td align="center">bind</td>
+<td align="center">IP值(127.0.0.1)</td>
+<td align="center">redis 仅接受来自指定 IP 的请求，不设置则默认为0.0.0.0，即接受所有请求。多个 IP 间需要通过<strong>空格</strong>做分割</td>
+</tr>
+<tr>
+<td align="center">port</td>
+<td align="center">端口号</td>
+<td align="center">监听端口，默认 6379</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>更多 redis 配置项与用途: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40482816/article/details/106262586">https://blog.csdn.net/weixin_40482816&#x2F;article&#x2F;details&#x2F;106262586</a></p>
+</blockquote>
+<h4 id="后台启动-redis-服务"><a href="#后台启动-redis-服务" class="headerlink" title="后台启动 redis 服务"></a>后台启动 redis 服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/redis/redis/redis-server /opt/redis/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="主从复制模式"><a href="#主从复制模式" class="headerlink" title="主从复制模式"></a>主从复制模式</h2><p>集群模式的一种，实现数据的多节点备份，支持对<strong>读</strong>操作的负载均衡。<br><strong>缺陷在于：故障恢复无法自动（需手动操作），写操作无法负载均衡，存储能力受单节点限制。</strong></p>
+<blockquote>
+<p>所有节点都支持读，但只有主节点支持写，因此写依旧是单节点的。</p>
+</blockquote>
+<h3 id="主从复制模式部署"><a href="#主从复制模式部署" class="headerlink" title="主从复制模式部署"></a>主从复制模式部署</h3><p>每个节点分开部署，可以在一个服务器上部署多个 redis 来简单构建集群。<br>每个 redis 节点的部署都可以按照上面的步骤来（同服务器下的话直接复制 bin 目录也行，<code>redis.conf</code>文件需要改端口号)</p>
+<p>相比单节点部署，主从复制模式要在<code>redis.conf</code>配置文件里改一些内容</p>
+<ul>
+<li>主节点: 什么都不需要做</li>
+<li>从节点: 修改<code>redis.conf</code>，找到里面的<code>REPLICATION</code>模块，添加一项<code>slaveof &lt;MASTER IP&gt; &lt;MASTER PORT&gt;</code>，修改完成后，重启这个 redis 节点<ul>
+<li>也可以不修改配置文件，在从节点启动的情况下，用<code>redis-cli</code>连接这个节点，执行一下<code>slaveof &lt;MASTER IP&gt; &lt;MASTER PORT&gt;</code>，也是一样的效果</li>
 </ul>
 </li>
 </ul>
+<p>从节点修改完后，用<code>redis-cli</code>连接一下<strong>主节点</strong>，执行一下<code>info Replication</code>，可以查看集群的状态（以及连接的节点是主节点还是从节点）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@127.0.0.1 bin]# ./redis-cli</span><br><span class="line">127.0.0.1:6379&gt; info Replication</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Replication</span></span><br><span class="line">role:slave</span><br><span class="line">master_host:10.199.0.1</span><br><span class="line">master_port:6379</span><br><span class="line">master_link_status:up</span><br><span class="line">master_last_io_seconds_ago:10</span><br><span class="line">master_sync_in_progress:0</span><br><span class="line">slave_repl_offset:129018</span><br><span class="line">slave_priority:100</span><br><span class="line">slave_read_only:1</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_replid:1e77c6e3d3a603dbd0693baf7d05a1147af5cb85</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:129018</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:1</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:1</span><br><span class="line">repl_backlog_histlen:129018</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>主从哨兵模式的部署，有配置文件详解:<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38110132/article/details/85168960">https://blog.csdn.net/m0_38110132&#x2F;article&#x2F;details&#x2F;85168960</a></p>
+</blockquote>
+<h2 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h2><p>集群模式的一种，基于主从模式，实现了自动化的故障恢复。<br><strong>缺陷在于：写操作无法负载均衡，每个节点都存放了全量数据，存储能力受单节点限制。</strong></p>
+<h3 id="哨兵模式部署"><a href="#哨兵模式部署" class="headerlink" title="哨兵模式部署"></a>哨兵模式部署</h3><p>哨兵模式基于主从模式部署，因此默认主从模式的三个节点已部署。</p>
+<ol>
+<li>在预备部署哨兵的节点上安装 redis（与 redis 节点放在一起的话就不需要额外安装），并将安装目录下的配置文件<code>sentinel.conf</code>复制到 conf 文件夹下。</li>
+<li>编辑<code>sentinel.conf</code>文件。主要内容如下，其余未提到的内容默认即可</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bind 127.0.0.1                              # 绑定 IP，跟 redis 设置同理</span><br><span class="line">port 26381                                  # 哨兵的 PORT</span><br><span class="line">daemonize yes                               # 支持后台启动（无此配置项则主动添加）</span><br><span class="line">dir /tmp                                    # 指定哨兵的工作路径（主要应该是指定了日志的存放路径）</span><br><span class="line">logfile &quot;sentinel.log&quot;                      # 指定日志文件名（怎么自动换文件？这个还不确定）</span><br><span class="line">sentinel monitor mymaster 127.0.0.1 6379 2  # 指定监控的集群的主节点的 IP 与 PORT，不需要输入从节点的信息，会自动拉取,mymaster 只是给主节点起名，可随意（但连接时要用），最后的 2 表示哨兵集群 2 个以上的节点认为主节点下线，才认定其客观下线，开始故障转移</span><br></pre></td></tr></table></figure>
+
+<h4 id="哨兵模式的一些注意点"><a href="#哨兵模式的一些注意点" class="headerlink" title="哨兵模式的一些注意点"></a>哨兵模式的一些注意点</h4><ol>
+<li><code>sentinel monitor mymaster 127.0.0.1 6379 2</code>这一行中填写的主节点 IP 与 PORT，后续会被用于发送给连接哨兵的客户端，用于客户端连接 redis 节点。因此直接写 127.0.0.1 会导致远程连接的 redis 客户端发生问题(直接读取到 127.0.0.1)</li>
+<li>哨兵模式下，JAVA 的 redis 客户端连接 redis 集群时，填写的不能是 redis 节点的 IP，<strong>必须是哨兵集群的 IP 与 PORT</strong>。<ul>
+<li>哨兵模式下也不是不能直接填写 redis 节点的 IP，但这样就只能当作单节点来连接（即普通的主从模式），不再拥有哨兵模式的特性。</li>
+<li>虽然填写的是哨兵的 IP，但依旧实际连接时依旧需要直连 redis 的主节点。因此当需要开通接口策略的时候，还是得哨兵和主从节点的端口都给开了</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>本质就是外置哨兵进程来监控 redis 集群进程的状态，外加故障转移机制。</p>
+</blockquote>
+<p>TODO：JAVA 如何连接使用 redis 单机与集群，包括 spring 模式，spring boot 模式，还有连接池之类的东西到底是什么</p>
+<h2 id="cluster-集群模式"><a href="#cluster-集群模式" class="headerlink" title="cluster 集群模式"></a>cluster 集群模式</h2><p>相比哨兵模式更近一步（并不完全基于哨兵模式），多个主节点分布式存放数据，且也拥有自动化的故障恢复功能。<br>cluster 集群模式里不再有专门的哨兵，每个主节点兼职了哨兵的功能。<br>因为每个主节点存放不同的数据，因此一个节点挂掉后就不能简单放弃这个节点，所以每个主节点都需要至少一个专属于自己的 slave 节点，用于故障转移。<br>因此 cluster 集群模式至少需要三主三从，即至少六个节点。</p>
+<h3 id="cluster-集群模式部署"><a href="#cluster-集群模式部署" class="headerlink" title="cluster 集群模式部署"></a>cluster 集群模式部署</h3><p>cluster 集群模式根据 redis 版本不同，存在两种部署方式。<br>5.0.0 以前的版本需要用到集群工具(ruby 编写，位于 redis 源码包，使用前需要先安装 ruby)，5.0.0 以后不需要另外安装 ruby，可以直接调用命令构建集群。<br>文档以 5.0.14 版本为例。</p>
+<p>其余部分与单节点模式相同（注意不需要设置 master 与 slave，这个是在后续构建集群时自动分配的）。主要讲几个集群模式必备的参数</p>
+<h4 id="开启集群模式所必须的参数"><a href="#开启集群模式所必须的参数" class="headerlink" title="开启集群模式所必须的参数"></a>开启集群模式所必须的参数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cluster-enabled yes                   # 是否开启集群模式（默认注释，即 no），必须开启这个，才能执行后续的集群构建</span><br><span class="line">cluster-config-file nodes-6000.conf   # 指定集群下这个节点的配置文件名，路径在 dir 这个项下被指定了</span><br></pre></td></tr></table></figure>
+
+<h4 id="内外网环境专用的参数"><a href="#内外网环境专用的参数" class="headerlink" title="内外网环境专用的参数"></a>内外网环境专用的参数</h4><p>特指集群内部无法使用外网 IP，只能使用内网 IP 的情况（如腾讯云）。<br>若不指定以下参数，外部 redis-cli 连接这个集群时，可能会在实际访问 redis 时去读取 127.0.0.1 的 redis（没有就直接报错了）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cluster-announce-ip 124.222.98.131   # 外部请求访问集群时返回的 IP</span><br><span class="line">cluster-announce-port 6000           # 外部请求访问集群时返回的 PORT</span><br><span class="line">cluster-announce-bus-port 16000      # 集群总线里的心跳 PORT（注意也是需要开策略的）</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h4><p>先分别启动六个节点，指定各自的配置文件。启动后可以通过<code>ps -ef | grep redis</code>查看节点的状态。应当有<code>cluster</code>的标注（但此时这些节点还不算一个集群）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-4-centos bin]# ps -ef | grep redis</span><br><span class="line">root     1160849       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:6000 [cluster]</span><br><span class="line">root     1160854       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:6001 [cluster]</span><br><span class="line">root     1160859       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:6002 [cluster]</span><br><span class="line">root     1160864       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:7000 [cluster]</span><br><span class="line">root     1160869       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:7001 [cluster]</span><br><span class="line">root     1160874       1  0 15:58 ?        00:00:01 ./redis-server 0.0.0.0:7002 [cluster]</span><br><span class="line">root     1228643  475033  0 16:16 pts/0    00:00:00 grep --color=auto redis</span><br></pre></td></tr></table></figure>
+
+<p>启动后，执行以下命令，构建集群。过程中可以看到自动分配的主从节点，且需要手动输入一次 yes 以生成配置文件。<br><code>--cluster-replicas 1</code>指定了每个主节点的从节点个数，因为只有 6 个节点，所以这里只能指定 1，即每个主节点各有一个从节点。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli --cluster create xxx.xxx.xx.xxx:6000 xxx.xxx.xx.xxx:6001 xxx.xxx.xx.xxx:6002 xxx.xxx.xx.xxx:7000 xxx.xxx.xx.xxx:7001 xxx.xxx.xx.xxx:7002 --cluster-replicas 1</span><br></pre></td></tr></table></figure>
+
+<p>执行完成后，可以用<code>redis-cli</code>连接一个节点，以验证一下集群的状态。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-4-centos bin]# ./redis-cli -h 127.0.0.1 -p 6000</span><br><span class="line">127.0.0.1:6000&gt; cluster info</span><br><span class="line">cluster_state:ok</span><br><span class="line">cluster_slots_assigned:16384</span><br><span class="line">cluster_slots_ok:16384</span><br><span class="line">cluster_slots_pfail:0</span><br><span class="line">cluster_slots_fail:0</span><br><span class="line">cluster_known_nodes:6</span><br><span class="line">cluster_size:3</span><br><span class="line">cluster_current_epoch:6</span><br><span class="line">cluster_my_epoch:1</span><br><span class="line">cluster_stats_messages_ping_sent:1392</span><br><span class="line">cluster_stats_messages_pong_sent:1314</span><br><span class="line">cluster_stats_messages_sent:2706</span><br><span class="line">cluster_stats_messages_ping_received:1309</span><br><span class="line">cluster_stats_messages_pong_received:1392</span><br><span class="line">cluster_stats_messages_meet_received:5</span><br><span class="line">cluster_stats_messages_received:2706</span><br></pre></td></tr></table></figure>
+
+<h4 id="集群模式的坑"><a href="#集群模式的坑" class="headerlink" title="集群模式的坑"></a>集群模式的坑</h4><p>网络策略严格的情况下会遇到的问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli --cluster create xxx.xxx.xx.xxx:6000 xxx.xxx.xx.xxx:6001 xxx.xxx.xx.xxx:6002 xxx.xxx.xx.xxx:7000 xxx.xxx.xx.xxx:7001 xxx.xxx.xx.xxx:7002 --cluster-replicas 1</span><br></pre></td></tr></table></figure>
+
+<p>在腾讯云的机器上执行这样的命令。理论上可以建立集群，但实际情况卡在了<code>Waiting for the cluster to join</code>这一步（持续等待）。<br>原因是：redis 集群不仅需要开通redis客户端连接的端口，而且需要开通<strong>集群的总线端口</strong>。<br>总线端口为：redis 节点的端口 + 10000，且几个节点就需要开几个总线端口。<br>上述的命令有 6 个端口，因此还需要在防火墙上额外开 6 个端口。</p>
+<blockquote>
+<p>这个问题目前仅发生在 redis 集群指定为外网 IP 的时候。当 IP 指定为 127.0.0.1 时，没有这个问题（但指定为 localhost 也没法从外部访问了，没啥意义）。</p>
+</blockquote>
 
       
     </div>
@@ -576,74 +714,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/" class="post-title-link" itemprop="url">logStash</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:57" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -727,6 +797,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/" class="post-title-link" itemprop="url">logStash</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:57" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -758,7 +896,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-28 15:48:14" itemprop="dateModified" datetime="2022-12-28T15:48:14+08:00">2022-12-28</time>
+                <time title="Modified: 2022-12-30 16:13:05" itemprop="dateModified" datetime="2022-12-30T16:13:05+08:00">2022-12-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1226,7 +1364,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

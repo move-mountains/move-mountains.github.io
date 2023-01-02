@@ -45,6 +45,26 @@
     </entry>
     
     <entry>
+      <title><![CDATA[linux 命令行下载工具]]></title>
+      <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BD%BD/</url>
+      <content type="html"><![CDATA[<h1 id="linux-命令行下载工具"><a href="#linux-命令行下载工具" class="headerlink" title="linux 命令行下载工具"></a>linux 命令行下载工具</h1><h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2>]]></content>
+      
+        <categories>
+            
+            <category> linux 操作 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[linux 禁止指定用户远程登录]]></title>
       <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/linux%E7%A6%81%E7%94%A8%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86/</url>
       <content type="html"><![CDATA[<h1 id="linux-禁止指定用户远程登录"><a href="#linux-禁止指定用户远程登录" class="headerlink" title="linux 禁止指定用户远程登录"></a>linux 禁止指定用户远程登录</h1><h2 id="针对普通用户"><a href="#针对普通用户" class="headerlink" title="针对普通用户"></a>针对普通用户</h2><ol>
@@ -75,26 +95,6 @@
 <p>将其中的<code>PermitRootLogin yes</code>这一行，由<code>yes</code>改成<code>no</code>。<br>改完后保存，然后<strong>重启 sshd 服务</strong>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
 ]]></content>
-      
-        <categories>
-            
-            <category> linux 操作 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[linux 命令行下载工具]]></title>
-      <url>/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BD%BD/</url>
-      <content type="html"><![CDATA[<h1 id="linux-命令行下载工具"><a href="#linux-命令行下载工具" class="headerlink" title="linux 命令行下载工具"></a>linux 命令行下载工具</h1><h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2>]]></content>
       
         <categories>
             
@@ -159,15 +159,19 @@
       <url>/2022/12/29/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h1 id="Hexo解决图片无法正常显示的问题"><a href="#Hexo解决图片无法正常显示的问题" class="headerlink" title="Hexo解决图片无法正常显示的问题"></a>Hexo解决图片无法正常显示的问题</h1><p>Hexo 支持 markdown 格式的文件做页面，但通过 hexo 命令生成 html 时，会由于文档中图片路径不对，生成的网页无法正常显示图片。</p>
 <p>Hexo 本地部署的方式，其实就是把 ${HEXO_HOME}&#x2F;source&#x2F;_post 文件夹下的 markdown 文件转成 html，统一放到 public 文件夹下。而不会复制其中的图片文件，这才导致了错位。</p>
-<p>解决这个问题，需要下载一个插件<code>hexo-renderer-marked</code>。</p>
-<h2 id="下载并启用-hexo-renderer-marked-插件"><a href="#下载并启用-hexo-renderer-marked-插件" class="headerlink" title="下载并启用 hexo-renderer-marked 插件"></a>下载并启用 hexo-renderer-marked 插件</h2><p>先下载安装插件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
+<p>解决这个问题，需要下载一个插件<code>hexo-asset-image</code>。</p>
+<h2 id="下载并启用-hexo-asset-image-插件"><a href="#下载并启用-hexo-asset-image-插件" class="headerlink" title="下载并启用 hexo-asset-image 插件"></a>下载并启用 hexo-asset-image 插件</h2><p>先下载安装插件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image -save</span><br></pre></td></tr></table></figure>
 
 <p>修改 Hexo 的<code>_config.yml</code>文件，修改其中的 writting 部分内容。</p>
-<p>hexo-renderer-marked 的官方文档（英文）：<a href="https://www.npmjs.com/package/hexo-renderer-marked">https://www.npmjs.com/package/hexo-renderer-marked</a></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span> <span class="comment"># File name of new posts</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">titlecase:</span> <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span> <span class="comment"># Apply to the whole site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">filename_case:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">render_drafts:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 这一项是是否启动 Asset 文件夹，即用于存放资源文件的文件夹，默认为 false，需手动改为 true</span></span><br><span class="line"><span class="comment"># 改为 true 后，以 hexo new 文章名 的方式生成新文章后，会自动生成一个与文章同名的文件夹，用于存放资源文件(如图片)</span></span><br><span class="line"><span class="comment"># 注意，资源文件夹的名称必须与文章完全一致(不需要 md 后缀)，且这一项必须为 true，否则下载了插件也无法生效</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment">## hexo-renderer-marked 插件相关配置，需主动添加</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="comment">## 这两项同时为 true，才能使 md 里的图片被正常显示，否则生成 html 后，图片行会变成普通文本</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span> <span class="comment"># File name of new posts</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">titlecase:</span> <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span> <span class="comment"># Apply to the whole site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">filename_case:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">render_drafts:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 这一项是是否启动 Asset 文件夹，即用于存放资源文件的文件夹，默认为 false，需手动改为 true</span></span><br><span class="line"><span class="comment"># 改为 true 后，以 hexo new 文章名 的方式生成新文章后，会自动生成一个与文章同名的文件夹，用于存放资源文件(如图片)</span></span><br><span class="line"><span class="comment"># 注意，资源文件夹的名称必须与文章完全一致(不需要 md 后缀)，且这一项必须为 true，否则下载了插件也无法生效</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>将<code>post_asset_folder</code>置为 true 后，每次执行<code>hexo g</code>时，hexo 才会将资源文件夹中的内容复制到 public 里去，且与生成的 html 放在同一个路径下。注意：即便<code>post_asset_folder</code>置为 true，hexo 也只会读取与文章同名的文件夹，将其视为资源文件，若资源文件夹与 md 文件不同名，则不会复制。</p>
+<h3 id="修改-hexo-asset-image-插件的内容"><a href="#修改-hexo-asset-image-插件的内容" class="headerlink" title="修改 hexo-asset-image 插件的内容"></a>修改 hexo-asset-image 插件的内容</h3><p>不知为啥，这个插件的版本与 bug 都极多，至少直接使用是做不到正常显示图片的。有了这个插件，确实在<code>hexo g</code>时会执行图片资源文件路径的转换，但转换出来的最终路径不对。所以需要手动修改里面的路径转换逻辑。</p>
+<p>编辑<code>$&#123;HEXO_HOME&#125;/node_modules/hexo-asset-image/index.js</code>文件，修改里面的内容。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;img&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">          <span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">          <span class="keyword">var</span> src = $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(!(<span class="regexp">/http[s]*.*|\/\/.*/</span>.<span class="title function_">test</span>(src)</span><br><span class="line">            || <span class="regexp">/^\s+\//</span>.<span class="title function_">test</span>(src)</span><br><span class="line">            || <span class="regexp">/^\s*\/uploads|images\//</span>.<span class="title function_">test</span>(src))) &#123;</span><br><span class="line">            <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">            <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">            <span class="keyword">var</span> linkArray = link.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">              <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">var</span> srcArray = src.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">              <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">if</span>(srcArray.<span class="property">length</span> &gt; <span class="number">1</span>)</span><br><span class="line">            srcArray.<span class="title function_">shift</span>();</span><br><span class="line">            src = srcArray.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line"></span><br><span class="line">              <span class="comment">// 修改的就是这块内容，原本的图片路径是由 root+link+src 拼接出来的，但很有问题，可能跟版本有关系</span></span><br><span class="line">              <span class="comment">// 这里使用的是 1.0.0 版本的 hexo-asset-image</span></span><br><span class="line">              <span class="comment">// src 就是文件的名称（只有名称，有后缀，不会带上路径）</span></span><br><span class="line">            <span class="comment">// $(this).attr(&#x27;src&#x27;, config.root + link + src);</span></span><br><span class="line">            <span class="comment">// console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span></span><br><span class="line">            <span class="comment">// console.info&amp;&amp;console.info(&quot;root:--&gt;&quot;+config.root);</span></span><br><span class="line">            <span class="comment">// console.info&amp;&amp;console.info(&quot;link:--&gt;&quot;+link);</span></span><br><span class="line">            $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>, src);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;src:--&gt;&quot;</span>+src);</span><br><span class="line">          &#125;</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<p>修改完 js 文件后保存，然后重新执行<code>hexo g</code>即可按新逻辑转换图片的路径。</p>
 <h2 id="文章中图片路径写法的注意事项"><a href="#文章中图片路径写法的注意事项" class="headerlink" title="文章中图片路径写法的注意事项"></a>文章中图片路径写法的注意事项</h2><p>上述方式可以解决图片完全不会被打包发布的问题，但可以看到图片与文章的绝对路径与相互之间的相对路径都是改变了的（执行<code>hexo g</code>后，生成的所有静态文档都是放到 public 文件夹内的，且资源文件夹内的资源会与文章放在一个文件夹下，同一篇文章只会有一个文件夹，里面塞了所有的图片与 唯一的html）。</p>
 <p>然而 html 文件是通过 md 文件生成的，生成后<strong>并不会主动改变图片的指向路径</strong>，所以：采用绝对路径的，可以在本地执行<code>hexo s</code>时继续看到文件（但是没用，发布到 github page 上就看不到了，因为对应路径不存在了），因此必须采用相对路径，且需要执行<code>hexo g</code>后依然能不会错的相对路径（即必须在同一个文件夹下）。</p>
 <p>但这样又会有一个问题：如果在 md 文件里就写成最终生成时应该有的图片相对路径，写文章直接预览 md 文件时，图片又会看不到（因此此时图片文件还在同名文件夹里）。</p>
@@ -179,6 +183,10 @@
 <p><img src="image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
 <p>这个的逻辑主要就是将指定的文件夹视作图片的根目录（原本肯定是 md 文件所在的路径），等于是修改了 md 文件渲染的规则，目前只有 typora  能简单做到对单篇文章的快速修改图片根目录。</p>
 <p>所以此后，图片文件与 md 文件可以视作放在一个文件夹里，本地与远程图片读取可兼容。</p>
+<blockquote>
+<p>原本的话，使用插件<code>hexo-renderer-marked</code>也可以做到一样的功能，但 typora 以相对路径复制进来的图片，其路径前面依旧会带上<code>/</code>，而如果带上了这个，<code>hexo-renderer-marked</code>插件在做 md 转 html 时，图片路径的转换会出问题（如果不带最前面的<code>/</code>则不会有问题），导致<code>hexo s</code>方式部署时图片读取不到，最终导致部署时的图片显示问题。</p>
+<p>也是因此，如果在执行<code>hexo s</code>前对整篇文章执行一次全局的替换，也可以做到兼容，但这样就不够简便了。</p>
+</blockquote>
 <h3 id="更简便设置文章图片根目录的方法"><a href="#更简便设置文章图片根目录的方法" class="headerlink" title="更简便设置文章图片根目录的方法"></a>更简便设置文章图片根目录的方法</h3><p>可以利用 hexo 的模板文件，在模板的开头直接加上这么一行:<code>typora-root-url:&#123;&#123; title &#125;&#125;</code></p>
 <p>这样以后通过<code>hexo new 文章</code>的方式，生成出来的 md 文件将自动设置好对应的图片根路径。</p>
 ]]></content>
@@ -345,7 +353,7 @@
 <p>对应的仓库建立完成后，应该是可以直接访问 GitHub Page 的默认网站的，网站路径:<strong>用户名.github.io</strong> 。</p>
 <p><img src="GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
 <h2 id="修改-Hexo-配置，设置上传到-GitHub-的路径"><a href="#修改-Hexo-配置，设置上传到-GitHub-的路径" class="headerlink" title="修改 Hexo 配置，设置上传到 GitHub 的路径"></a>修改 Hexo 配置，设置上传到 GitHub 的路径</h2><p>打开 Hexo 的配置文件<code>_config.yml</code>,找到<code>deploy</code>这一块，配置上新建的 GitHub 仓库的 url。</p>
-<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
+<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
 <blockquote>
 <p>具体上传到哪个分支、 GitHub Page 怎么选择分支还没研究过</p>
 </blockquote>
@@ -371,6 +379,37 @@
         <tags>
             
             <tag> Hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ELK 日志分析系统]]></title>
+      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/</url>
+      <content type="html"><![CDATA[<h1 id="ELK-日志分析系统"><a href="#ELK-日志分析系统" class="headerlink" title="ELK 日志分析系统"></a>ELK 日志分析系统</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li>Elasticsearch: 即 ES，Elastic Stack核心的分布式搜索和分析引擎,是一个基于Lucene、分布式、通过Restful方式进行交互的近实时搜索平台框架，在 ELK 里定位类似数据库，它的特点就是搜索与分析极快。</li>
+<li>Kibana: ES 的分析及可视化平台，也可用于操纵 ES 里的数据，定位类似 Navicat</li>
+<li>Logstash: 服务器端数据处理管道，可以从多个来源（文件、数据库等）<strong>采集</strong>、<strong>转换</strong>数据，再将数据发送到指定的“存储库”（可以是文件、数据库、ES，甚至仅仅是控制台）去。</li>
+<li>Filebeat: 转发和集中日志数据的<strong>轻量级</strong>传送工具，可以监控日志文件，将日志事件（即变化）发送给 Elasticsearch 或 LogStash。<ul>
+<li>Filebeat 本身属于一种 Beat，Beat 是啥后续还得研究研究。<br>传统的 ELK 只有 Elasticsearch，Kibana，Logstash 三项（ELK 就是这三个组件的首字母合成），Filebeat 是后面出现的用于替代 LogStash 的数据收集功能的工具，Filebeat 的特点就在于<strong>轻量</strong>。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> ELK日志采集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ELK </tag>
+            
+            <tag> Kibana </tag>
             
         </tags>
         
@@ -544,37 +583,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ELK 日志分析系统]]></title>
-      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/ELK%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/</url>
-      <content type="html"><![CDATA[<h1 id="ELK-日志分析系统"><a href="#ELK-日志分析系统" class="headerlink" title="ELK 日志分析系统"></a>ELK 日志分析系统</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
-<li>Elasticsearch: 即 ES，Elastic Stack核心的分布式搜索和分析引擎,是一个基于Lucene、分布式、通过Restful方式进行交互的近实时搜索平台框架，在 ELK 里定位类似数据库，它的特点就是搜索与分析极快。</li>
-<li>Kibana: ES 的分析及可视化平台，也可用于操纵 ES 里的数据，定位类似 Navicat</li>
-<li>Logstash: 服务器端数据处理管道，可以从多个来源（文件、数据库等）<strong>采集</strong>、<strong>转换</strong>数据，再将数据发送到指定的“存储库”（可以是文件、数据库、ES，甚至仅仅是控制台）去。</li>
-<li>Filebeat: 转发和集中日志数据的<strong>轻量级</strong>传送工具，可以监控日志文件，将日志事件（即变化）发送给 Elasticsearch 或 LogStash。<ul>
-<li>Filebeat 本身属于一种 Beat，Beat 是啥后续还得研究研究。<br>传统的 ELK 只有 Elasticsearch，Kibana，Logstash 三项（ELK 就是这三个组件的首字母合成），Filebeat 是后面出现的用于替代 LogStash 的数据收集功能的工具，Filebeat 的特点就在于<strong>轻量</strong>。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> ELK日志采集 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> ELK </tag>
-            
-            <tag> Kibana </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[idea 关联 tomcat]]></title>
       <url>/2022/12/26/tomcat%E7%9B%B8%E5%85%B3/idea%E4%B8%8B%E4%BD%BF%E7%94%A8tomcat/</url>
       <content type="html"><![CDATA[<h1 id="idea-关联-tomcat"><a href="#idea-关联-tomcat" class="headerlink" title="idea 关联 tomcat"></a>idea 关联 tomcat</h1><h2 id="配置默认-tomcat"><a href="#配置默认-tomcat" class="headerlink" title="配置默认 tomcat"></a>配置默认 tomcat</h2><p>打开一个项目，选择 Edit Configurations 按钮。<br><img src="idea%E9%85%8D%E7%BD%AEtomcat-Edit_Configurations.png" alt="idea配置tomcat-Edit_Configurations.png"></p>
@@ -726,29 +734,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[logStash]]></title>
-      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/</url>
-      <content type="html"><![CDATA[<h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> ELK日志采集 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> ELK </tag>
-            
-            <tag> logStash </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux 版 Kibana 部署与踩坑]]></title>
       <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/</url>
       <content type="html"><![CDATA[<h1 id="Linux-版-Kibana-部署与踩坑"><a href="#Linux-版-Kibana-部署与踩坑" class="headerlink" title="Linux 版 Kibana 部署与踩坑"></a>Linux 版 Kibana 部署与踩坑</h1><p>实验版本为 7.13.4。<br>主要是与 ES 的版本配套。</p>
@@ -781,6 +766,29 @@
             <tag> ELK </tag>
             
             <tag> Kibana </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[logStash]]></title>
+      <url>/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Logstash/LogStash/</url>
+      <content type="html"><![CDATA[<h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> ELK日志采集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ELK </tag>
+            
+            <tag> logStash </tag>
             
         </tags>
         
