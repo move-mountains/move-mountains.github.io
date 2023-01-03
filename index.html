@@ -206,7 +206,7 @@
           <h1 id="Typora免费版本安装流程"><a href="#Typora免费版本安装流程" class="headerlink" title="Typora免费版本安装流程"></a>Typora免费版本安装流程</h1><h2 id="几个背景"><a href="#几个背景" class="headerlink" title="几个背景"></a>几个背景</h2><p>最新的免费版本0.11.18(安装版本是0.11.17，反正差别应该不大)，安装包比较坑爹，只能 install 且不能自己选择安装路径，只能放进 C 盘。</p>
 <p>官网已无法下载到  Typora 的免费版本，安装包只能在各个网盘、网站里翻找。</p>
 <h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>安装包下载完成后，直接点击打开，即可安装，安装时会提示是给全部用户安装还是仅给当前用户，可以只选给当前用户安装（应该区别不大）。</p>
-<p><img src="12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228164246182.png" alt="image-20221228164246182"></p>
+<p><img src="/2022/12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228164246182.png" alt="image-20221228164246182"></p>
 <p>然后自动读条安装，安装完成后会自动打开，此时将会发生报错。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The beta version of typora is expired, please download and install a newer version.</span><br></pre></td></tr></table></figure>
 
@@ -219,11 +219,11 @@
 <li><p>在 HKEY_CURRENT_USER\SOFTWARE\ 下找到  Typora 目录。</p>
 </li>
 </ol>
-<p><img src="12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228165410190.png" alt="image-20221228165410190"></p>
+<p><img src="/image-20221228165410190.png" alt="image-20221228165410190"></p>
 <ol start="3">
 <li>右键注册表这边的 Typora 目录，打开 Typora 权限设置。将权限修改为拒绝（可以把所有用户访问的权限都设置成拒绝)。</li>
 </ol>
-<p><img src="12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228165634806.png" alt="image-20221228165634806"></p>
+<p><img src="/image-20221228165634806.png" alt="image-20221228165634806"></p>
 <p>设置完成后，Typora 就可以正常启动了。</p>
 
       
@@ -456,16 +456,16 @@
           <h1 id="修改-Linux-的-SSH-访问端口"><a href="#修改-Linux-的-SSH-访问端口" class="headerlink" title="修改 Linux 的 SSH 访问端口"></a>修改 Linux 的 SSH 访问端口</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>起因是腾讯云服务器突然告警说密码被破解，马上又提示有木马植入。<br>        本身服务器里没啥关键内容，但房间里有蟑螂还每天被提醒“家里进了蟑螂”终归是恶心的。<br>        干脆重装系统，再改了 SSH 的默认端口。</p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="检查当前服务器是否已安装-SSH"><a href="#检查当前服务器是否已安装-SSH" class="headerlink" title="检查当前服务器是否已安装 SSH"></a>检查当前服务器是否已安装 SSH</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep ssh</span><br></pre></td></tr></table></figure>
 
-<p><img src="12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/rpm%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85SSH.png" alt="rpm检查服务器是否已安装SSH.png"></p>
+<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/rpm%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85SSH.png" alt="rpm检查服务器是否已安装SSH.png"></p>
 <h3 id="找到-SSH-服务的配置文件"><a href="#找到-SSH-服务的配置文件" class="headerlink" title="找到 SSH 服务的配置文件"></a>找到 SSH 服务的配置文件</h3><p>一般是<code>/etc/ssh</code>这个路径下的，配置文件名<code>sshd_config</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/ssh/sshd_conf*</span><br></pre></td></tr></table></figure>
 
-<p><img src="12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/sshd_config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="sshd_config配置文件.png"></p>
+<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/sshd_config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="sshd_config配置文件.png"></p>
 <blockquote>
 <p>可能会出现跟图里一样的有两个配置文件的情况，不用管有后缀的，实际起作用的还是<code>sshd_config</code>这个配置文件。</p>
 </blockquote>
 <h3 id="编辑配置文件sshd-config"><a href="#编辑配置文件sshd-config" class="headerlink" title="编辑配置文件sshd_config"></a>编辑配置文件<code>sshd_config</code></h3><p><code>vim sshd_config</code>编辑配置文件，修改里面的<code>Port</code>字段，这一行默认是被注释掉的，需要去掉注释并修改端口。</p>
-<p><img src="12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/%E4%BF%AE%E6%94%B9SSH%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3.png" alt="修改SSH默认端口"></p>
+<p><img src="/2022/12/29/%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E6%93%8D%E4%BD%9C/%E4%BF%AE%E6%94%B9Linux%E7%9A%84SSH%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3/%E4%BF%AE%E6%94%B9SSH%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3.png" alt="修改SSH默认端口"></p>
 <blockquote>
 <p>SSH 是支持多端口访问的，即可以在保留 22 端口访问的基础上新增可访问的端口，具体操作就是多加一行<code>Port</code>，几行<code>Port</code>就几个 SSH 端口。</p>
 </blockquote>
@@ -572,7 +572,7 @@
 <p>具体操作就是通过 typora 打开 md 文件，然后设置文章的图片根目录。将其修改为资源文件夹。</p>
 <p>（格式 -&gt; 图样 -&gt; 设置图片根目录 -&gt; 选中同名资源文件夹）</p>
 <p>完成后，typora 会在文章抬头出现这样一行内容：<code>typora-root-url: Hexo解决图片无法正常显示的问题</code></p>
-<p><img src="12/29/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
+<p><img src="/image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
 <p>这个的逻辑主要就是将指定的文件夹视作图片的根目录（原本肯定是 md 文件所在的路径），等于是修改了 md 文件渲染的规则，目前只有 typora  能简单做到对单篇文章的快速修改图片根目录。</p>
 <p>所以此后，图片文件与 md 文件可以视作放在一个文件夹里，本地与远程图片读取可兼容。</p>
 <blockquote>
@@ -582,6 +582,154 @@
 <h3 id="更简便设置文章图片根目录的方法"><a href="#更简便设置文章图片根目录的方法" class="headerlink" title="更简便设置文章图片根目录的方法"></a>更简便设置文章图片根目录的方法</h3><p>可以利用 hexo 的模板文件，在模板的开头直接加上这么一行:<code>typora-root-url:&#123;&#123; title &#125;&#125;</code></p>
 <p>这样以后通过<code>hexo new 文章</code>的方式，生成出来的 md 文件将自动设置好对应的图片根路径。</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">Hexo 更换主题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-27 23:17:11 / Modified: 11:41:42" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hexo-更换主题"><a href="#Hexo-更换主题" class="headerlink" title="Hexo 更换主题"></a>Hexo 更换主题</h1><h2 id="下载安装主题"><a href="#下载安装主题" class="headerlink" title="下载安装主题"></a>下载安装主题</h2><p>以更换为 Next 主题为例。要先从 git 上将主题包下载下来，可以通过<code>git clone</code>的方式，也可以直接下载源码压缩包并解压。主题包的位置需要是<code>$&#123;HEXO_HOME&#125;\themes</code>路径下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>下载解压(或者直接 clone)后，theme 就等于安装完毕，后面只需要启用。</p>
+<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>修改 Hexo 的配置文件<code>_config.yml</code>。找到<code>theme</code>这一块内容，改成想生效的主题（注意，要与 themes 里的文件夹名称相同）。<br>修改完成后保存，然后重启一下 Hexo，主题即可生效。</p>
+<h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><h3 id="Hexo-本地服务重启后，访问页面报错"><a href="#Hexo-本地服务重启后，访问页面报错" class="headerlink" title="Hexo 本地服务重启后，访问页面报错"></a>Hexo 本地服务重启后，访问页面报错</h3><p>报错内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#x27;_layout.swig&#x27; %&#125; &#123;% import &#x27;_macro/post.swig&#x27; as post_template %&#125; &#123;% import &#x27;_macro/sidebar.swig&#x27; as sidebar_template %&#125; &#123;% block title %&#125;&#123;&#123; config.title &#125;&#125;&#123;% if theme.index_with_subtitle and config.subtitle %&#125; - &#123;&#123;config.subtitle &#125;&#125;&#123;% endif %&#125;&#123;% endblock %&#125; &#123;% block page_class %&#125; &#123;% if is_home() %&#125;page-home&#123;% endif -%&#125; &#123;% endblock %&#125; &#123;% block content %&#125;</span><br><span class="line">&#123;% for post in page.posts %&#125; &#123;&#123; post_template.render(post, true) &#125;&#125; &#123;% endfor %&#125;</span><br><span class="line">&#123;% include &#x27;_partials/pagination.swig&#x27; %&#125; &#123;% endblock %&#125; &#123;% block sidebar %&#125; &#123;&#123; sidebar_template.render(false) &#125;&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>出现这个的原因应该是 Hexo 在 5.0 版本以后删除了自带的 swig 包，所以需要自己手动安装一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hexo-正常启动后，命令行出现-ATTENTION"><a href="#Hexo-正常启动后，命令行出现-ATTENTION" class="headerlink" title="Hexo 正常启动后，命令行出现 ATTENTION"></a>Hexo 正常启动后，命令行出现 ATTENTION</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WARN  ===============================================================</span><br><span class="line">WARN  ========================= ATTENTION! ==========================</span><br><span class="line">WARN  ===============================================================</span><br><span class="line">WARN   NexT repository is moving here: https://github.com/theme-next</span><br><span class="line">WARN  ===============================================================</span><br><span class="line">WARN   It&#x27;s rebase to v6.0.0 and future maintenance will resume there</span><br><span class="line">WARN  ===============================================================</span><br></pre></td></tr></table></figure>
+
+<p>这个原因是 next 主题在 git 上的路径发生过迁移，老版本已不再维护，要获取最新版本的 NexT 主题需要前往新的 url（如 ATTENTION 中所示）。<br>这个坑的地方在于目前网上大多数教程里，下载 NexT 主题包时，使用的都还是老版本的 url。<br>老版本的包不是不能用，只是不再更新了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Hexo 的 NexT 主题常用配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-27 23:17:11 / Modified: 11:42:11" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hexo-的-NexT-主题常用配置"><a href="#Hexo-的-NexT-主题常用配置" class="headerlink" title="Hexo 的 NexT 主题常用配置"></a>Hexo 的 NexT 主题常用配置</h1>
       
     </div>
 
@@ -701,7 +849,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>保存后，该文章就将归属于<code>redis</code>分类，所对应的<code>redis</code>分类将会出现在首页。</p>
-<p><img src="12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
+<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
 <h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p><strong>标签的创建与添加与分类的步骤基本一致。</strong></p>
 <h4 id="生成“标签”页并添加tpye属性"><a href="#生成“标签”页并添加tpye属性" class="headerlink" title="生成“标签”页并添加tpye属性"></a>生成“标签”页并添加<code>tpye</code>属性</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 
@@ -718,155 +866,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">tags:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>保存后，该文章将拥有<code>redis</code>标签，所对应的<code>redis</code>标签将出现在首页。</p>
-<p><img src="12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Hexo 的 NexT 主题常用配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-12-27 23:17:11 / Modified: 11:42:11" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hexo-的-NexT-主题常用配置"><a href="#Hexo-的-NexT-主题常用配置" class="headerlink" title="Hexo 的 NexT 主题常用配置"></a>Hexo 的 NexT 主题常用配置</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">Hexo 更换主题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-12-27 23:17:11 / Modified: 11:41:42" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hexo-更换主题"><a href="#Hexo-更换主题" class="headerlink" title="Hexo 更换主题"></a>Hexo 更换主题</h1><h2 id="下载安装主题"><a href="#下载安装主题" class="headerlink" title="下载安装主题"></a>下载安装主题</h2><p>以更换为 Next 主题为例。要先从 git 上将主题包下载下来，可以通过<code>git clone</code>的方式，也可以直接下载源码压缩包并解压。主题包的位置需要是<code>$&#123;HEXO_HOME&#125;\themes</code>路径下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p>下载解压(或者直接 clone)后，theme 就等于安装完毕，后面只需要启用。</p>
-<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>修改 Hexo 的配置文件<code>_config.yml</code>。找到<code>theme</code>这一块内容，改成想生效的主题（注意，要与 themes 里的文件夹名称相同）。<br>修改完成后保存，然后重启一下 Hexo，主题即可生效。</p>
-<h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><h3 id="Hexo-本地服务重启后，访问页面报错"><a href="#Hexo-本地服务重启后，访问页面报错" class="headerlink" title="Hexo 本地服务重启后，访问页面报错"></a>Hexo 本地服务重启后，访问页面报错</h3><p>报错内容如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &#x27;_layout.swig&#x27; %&#125; &#123;% import &#x27;_macro/post.swig&#x27; as post_template %&#125; &#123;% import &#x27;_macro/sidebar.swig&#x27; as sidebar_template %&#125; &#123;% block title %&#125;&#123;&#123; config.title &#125;&#125;&#123;% if theme.index_with_subtitle and config.subtitle %&#125; - &#123;&#123;config.subtitle &#125;&#125;&#123;% endif %&#125;&#123;% endblock %&#125; &#123;% block page_class %&#125; &#123;% if is_home() %&#125;page-home&#123;% endif -%&#125; &#123;% endblock %&#125; &#123;% block content %&#125;</span><br><span class="line">&#123;% for post in page.posts %&#125; &#123;&#123; post_template.render(post, true) &#125;&#125; &#123;% endfor %&#125;</span><br><span class="line">&#123;% include &#x27;_partials/pagination.swig&#x27; %&#125; &#123;% endblock %&#125; &#123;% block sidebar %&#125; &#123;&#123; sidebar_template.render(false) &#125;&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>出现这个的原因应该是 Hexo 在 5.0 版本以后删除了自带的 swig 包，所以需要自己手动安装一下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-<h3 id="Hexo-正常启动后，命令行出现-ATTENTION"><a href="#Hexo-正常启动后，命令行出现-ATTENTION" class="headerlink" title="Hexo 正常启动后，命令行出现 ATTENTION"></a>Hexo 正常启动后，命令行出现 ATTENTION</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WARN  ===============================================================</span><br><span class="line">WARN  ========================= ATTENTION! ==========================</span><br><span class="line">WARN  ===============================================================</span><br><span class="line">WARN   NexT repository is moving here: https://github.com/theme-next</span><br><span class="line">WARN  ===============================================================</span><br><span class="line">WARN   It&#x27;s rebase to v6.0.0 and future maintenance will resume there</span><br><span class="line">WARN  ===============================================================</span><br></pre></td></tr></table></figure>
-
-<p>这个原因是 next 主题在 git 上的路径发生过迁移，老版本已不再维护，要获取最新版本的 NexT 主题需要前往新的 url（如 ATTENTION 中所示）。<br>这个坑的地方在于目前网上大多数教程里，下载 NexT 主题包时，使用的都还是老版本的 url。<br>老版本的包不是不能用，只是不再更新了。</p>
+<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
 
       
     </div>
@@ -943,9 +943,9 @@
           <h1 id="Hexo-远程部署"><a href="#Hexo-远程部署" class="headerlink" title="Hexo 远程部署"></a>Hexo 远程部署</h1><p>主要是把 Hexo 网站部署到 GitHub 上去，使用 GitHub Page 的功能直接远程访问博客。</p>
 <h2 id="GitHub-新建仓库"><a href="#GitHub-新建仓库" class="headerlink" title="GitHub 新建仓库"></a>GitHub 新建仓库</h2><p>使用 GitHub Page，必须要用指定的仓库(repository)，即: <strong>用户名.github.io</strong>。<br>访问权限需要是 public。</p>
 <p>对应的仓库建立完成后，应该是可以直接访问 GitHub Page 的默认网站的，网站路径:<strong>用户名.github.io</strong> 。</p>
-<p><img src="12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2/GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
+<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2/GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
 <h2 id="修改-Hexo-配置，设置上传到-GitHub-的路径"><a href="#修改-Hexo-配置，设置上传到-GitHub-的路径" class="headerlink" title="修改 Hexo 配置，设置上传到 GitHub 的路径"></a>修改 Hexo 配置，设置上传到 GitHub 的路径</h2><p>打开 Hexo 的配置文件<code>_config.yml</code>,找到<code>deploy</code>这一块，配置上新建的 GitHub 仓库的 url。</p>
-<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
+<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
 <blockquote>
 <p>具体上传到哪个分支、 GitHub Page 怎么选择分支还没研究过</p>
 </blockquote>
