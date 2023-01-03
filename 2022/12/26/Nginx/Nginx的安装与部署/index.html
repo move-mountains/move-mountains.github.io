@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Nginx 的安装与部署参考链接: https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lywJ&#x2F;p&#x2F;10710361.html 简介Nginx 是一款高性能的 http 服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。由俄罗斯的程序设计师 Igor Sysoev 所开发，官方测试 nginx 能够支支撑 5 万并发链接，并且 cpu、内存等资源消耗却非常低，运行">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png">
-<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/%E7%94%9F%E6%88%90Makefile.png">
-<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png">
-<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx-V%E5%91%BD%E4%BB%A4.png">
+<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png">
+<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/%E7%94%9F%E6%88%90Makefile.png">
+<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png">
+<meta property="og:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx-V%E5%91%BD%E4%BB%A4.png">
 <meta property="article:published_time" content="2022-12-26T15:17:11.000Z">
 <meta property="article:modified_time" content="2022-12-30T08:13:05.249Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png">
+<meta name="twitter:image" content="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png">
 
 <link rel="canonical" href="http://move-mountains.github.io/2022/12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">
 
@@ -243,7 +243,7 @@
 <blockquote>
 <p>好像确实有不通过源码包，直接安装的方法，之后研究下。</p>
 </blockquote>
-<h3 id="上传并解压"><a href="#上传并解压" class="headerlink" title="上传并解压"></a>上传并解压</h3><p>测试版本用的是稳定版本 nginx-1.20.2，上传压缩包至服务器，路径随意（只是源码包，编译出来后的才是部署本体）。<br><img src="nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png" alt="nginx压缩包.png"><br>直接解压。</p>
+<h3 id="上传并解压"><a href="#上传并解压" class="headerlink" title="上传并解压"></a>上传并解压</h3><p>测试版本用的是稳定版本 nginx-1.20.2，上传压缩包至服务器，路径随意（只是源码包，编译出来后的才是部署本体）。<br><img src="12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E5%8E%8B%E7%BC%A9%E5%8C%85.png" alt="nginx压缩包.png"><br>直接解压。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.20.2.tar.gz</span><br></pre></td></tr></table></figure>
 
 <h3 id="编译并部署"><a href="#编译并部署" class="headerlink" title="编译并部署"></a>编译并部署</h3><p>先创建一下存放临时文件的文件夹，下一个步骤会用到。</p>
@@ -255,13 +255,13 @@
 <blockquote>
 <p><code>\</code> 其实只是续写标识符，表明这条命令没写完，下一行接着写，所以本质上上面这一块只是一条命令。<br><code>--prefix=/usr/local/nginx</code>这一行指定了编译生成的 nginx 部署成果的路径，有必要的话可以改。<br>后续跟着的所有参数其实都是需要添加的 nginx 的功能（类似 plugin）。<br>最后一行的<code>--with-stream</code>非常必要，用于转发各种 TCP，UDP 请求的核心，<strong>内外网映射数据库端口</strong>就需要这个。</p>
 </blockquote>
-<p>执行完上述命令后，会在当前目录下看到一个<code>Makefile</code>文件，具体作用不太清楚，反正跟编译有关。<br><img src="%E7%94%9F%E6%88%90Makefile.png" alt="生成Makefile.png"><br>执行<code>make</code>命令，执行编译，成功后再执行<code>make install</code>安装部署 nginx 成果。</p>
+<p>执行完上述命令后，会在当前目录下看到一个<code>Makefile</code>文件，具体作用不太清楚，反正跟编译有关。<br><img src="12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/%E7%94%9F%E6%88%90Makefile.png" alt="生成Makefile.png"><br>执行<code>make</code>命令，执行编译，成功后再执行<code>make install</code>安装部署 nginx 成果。</p>
 <blockquote>
 <p>仅仅执行一个 <code>make</code> 命令，什么文件也不会生成。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<p><code>make install</code>执行完成后，nginx 即部署完成，可以进入安装目录启动 nginx。<br><img src="nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png" alt="nginx部署完成.png"></p>
+<p><code>make install</code>执行完成后，nginx 即部署完成，可以进入安装目录启动 nginx。<br><img src="12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png" alt="nginx部署完成.png"></p>
 <h3 id="编译过程可能遇到的报错"><a href="#编译过程可能遇到的报错" class="headerlink" title="编译过程可能遇到的报错"></a>编译过程可能遇到的报错</h3><h4 id="PCRE-library"><a href="#PCRE-library" class="headerlink" title="PCRE library"></a>PCRE library</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure: error: the HTTP rewrite module requires the PCRE library.</span><br><span class="line">You can either do not enable the modules, or install the OpenSSL library</span><br><span class="line">into the system, or build the OpenSSL library statically from the source</span><br><span class="line">with nginx by using --with-openssl=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
 
 <p>这个报错的原因是少了 PCRE library，需要再安装一下。<br>腾讯云上可以 yum 方式安装</p>
@@ -290,7 +290,7 @@
 <h2 id="常用的一些命令"><a href="#常用的一些命令" class="headerlink" title="常用的一些命令"></a>常用的一些命令</h2><h3 id="测试命令-nginx-t"><a href="#测试命令-nginx-t" class="headerlink" title="测试命令:nginx -t"></a>测试命令:<code>nginx -t</code></h3><p>可以用于验证修改了<code>nginx.conf</code>文件后，有没有严重错误会导致 nginx 启动失败。<br>成功的例子如下。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-4-centos sbin]# cd /usr/local/nginx/sbin</span><br><span class="line">[root@VM-16-4-centos sbin]# ./nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
 
-<h3 id="查询版本号与已安装的扩展-nginx-V"><a href="#查询版本号与已安装的扩展-nginx-V" class="headerlink" title="查询版本号与已安装的扩展: nginx -V"></a>查询版本号与已安装的扩展: <code>nginx -V</code></h3><p>注意大写。执行后可以看到 nginx 目前已有的扩展（可以用来检查是不是少了<code>--with-stream</code>这一项）。<br><img src="nginx-V%E5%91%BD%E4%BB%A4.png" alt="nginx-V命令.png"></p>
+<h3 id="查询版本号与已安装的扩展-nginx-V"><a href="#查询版本号与已安装的扩展-nginx-V" class="headerlink" title="查询版本号与已安装的扩展: nginx -V"></a>查询版本号与已安装的扩展: <code>nginx -V</code></h3><p>注意大写。执行后可以看到 nginx 目前已有的扩展（可以用来检查是不是少了<code>--with-stream</code>这一项）。<br><img src="12/26/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/nginx-V%E5%91%BD%E4%BB%A4.png" alt="nginx-V命令.png"></p>
 
     </div>
 
