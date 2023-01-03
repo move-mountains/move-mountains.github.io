@@ -646,74 +646,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/" class="post-title-link" itemprop="url">Filebeat 部署与踩坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:48" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Filebeat-部署与踩坑"><a href="#Filebeat-部署与踩坑" class="headerlink" title="Filebeat 部署与踩坑"></a>Filebeat 部署与踩坑</h1><h2 id="模板配置文件"><a href="#模板配置文件" class="headerlink" title="模板配置文件"></a>模板配置文件</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">log</span> <span class="comment">#input类型为log</span></span><br><span class="line"><span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#表示是该log类型配置生效</span></span><br><span class="line"><span class="string">paths：</span>     <span class="comment">#指定要监控的日志，目前按照Go语言的glob函数处理。没有对配置目录做递归处理，比如配置的如果是：- /var/log/* /*.log  #则只会去/var/log目录的所有子目录中寻找以&quot;.log&quot;结尾的文件，而不会寻找/var/log目录下以&quot;.log&quot;结尾的文件。</span></span><br><span class="line"><span class="attr">recursive_glob.enabled:</span> <span class="comment">#启用全局递归模式，例如/foo/**包括/foo, /foo/*, /foo/*/*</span></span><br><span class="line"><span class="string">encoding：#指定被监控的文件的编码类型，使用plain和utf-8都是可以处理中文日志的</span></span><br><span class="line"><span class="attr">exclude_lines:</span> [<span class="string">&#x27;^DBG&#x27;</span>] <span class="comment">#不包含匹配正则的行</span></span><br><span class="line"><span class="attr">include_lines:</span> [<span class="string">&#x27;^ERR&#x27;</span>, <span class="string">&#x27;^WARN&#x27;</span>]  <span class="comment">#包含匹配正则的行</span></span><br><span class="line"><span class="attr">harvester_buffer_size:</span> <span class="number">16384</span> <span class="comment">#每个harvester在获取文件时使用的缓冲区的字节大小</span></span><br><span class="line"><span class="attr">max_bytes:</span> <span class="number">10485760</span> <span class="comment">#单个日志消息可以拥有的最大字节数。max_bytes之后的所有字节都被丢弃而不发送。默认值为10MB (10485760)</span></span><br><span class="line"><span class="attr">exclude_files:</span> [<span class="string">&#x27;\.gz$&#x27;</span>]  <span class="comment">#用于匹配希望Filebeat忽略的文件的正则表达式列表</span></span><br><span class="line"><span class="attr">ingore_older:</span> <span class="number">0</span> <span class="comment">#默认为0，表示禁用，可以配置2h，2m等，注意ignore_older必须大于close_inactive的值.表示忽略超过设置值未更新的文件或者文件从来没有被harvester收集</span></span><br><span class="line"><span class="string">close_*</span> <span class="comment">#close_ *配置选项用于在特定标准或时间之后关闭harvester。 关闭harvester意味着关闭文件处理程序。 如果在harvester关闭后文件被更新，则在scan_frequency过后，文件将被重新拾取。 但是，如果在harvester关闭时移动或删除文件，Filebeat将无法再次接收文件</span></span><br><span class="line"><span class="string">，并且harvester未读取的任何数据都将丢失。</span></span><br><span class="line"><span class="string">close_inactive</span>  <span class="comment">#启动选项时，如果在制定时间没有被读取，将关闭文件句柄</span></span><br><span class="line"><span class="string">读取的最后一条日志定义为下一次读取的起始点，而不是基于文件的修改时间</span></span><br><span class="line"><span class="string">如果关闭的文件发生变化，一个新的harverster将在scan_frequency运行后被启动</span></span><br><span class="line"><span class="string">建议至少设置一个大于读取日志频率的值，配置多个prospector来实现针对不同更新速度的日志文件</span></span><br><span class="line"><span class="string">使用内部时间戳机制，来反映记录日志的读取，每次读取到最后一行日志时开始倒计时使用2h</span> <span class="string">5m</span> <span class="string">来表示</span></span><br><span class="line"><span class="string">close_rename</span> <span class="comment">#当选项启动，如果文件被重命名和移动，filebeat关闭文件的处理读取</span></span><br><span class="line"><span class="string">close_removed</span> <span class="comment">#当选项启动，文件被删除时，filebeat关闭文件的处理读取这个选项启动后，必须启动clean_removed</span></span><br><span class="line"><span class="string">close_eof</span> <span class="comment">#适合只写一次日志的文件，然后filebeat关闭文件的处理读取</span></span><br><span class="line"><span class="string">close_timeout</span> <span class="comment">#当选项启动时，filebeat会给每个harvester设置预定义时间，不管这个文件是否被读取，达到设定时间后，将被关闭</span></span><br><span class="line"><span class="string">close_timeout</span> <span class="string">不能等于ignore_older,会导致文件更新时，不会被读取如果output一直没有输出日志事件，这个timeout是不会被启动的，</span></span><br><span class="line"><span class="string">至少要要有一个事件发送，然后haverter将被关闭</span></span><br><span class="line"><span class="string">设置0</span> <span class="string">表示不启动</span></span><br><span class="line"><span class="string">clean_inactived</span> <span class="comment">#从注册表文件中删除先前收获的文件的状态</span></span><br><span class="line"><span class="string">设置必须大于ignore_older+scan_frequency，以确保在文件仍在收集时没有删除任何状态</span></span><br><span class="line"><span class="string">配置选项有助于减小注册表文件的大小，特别是如果每天都生成大量的新文件</span></span><br><span class="line"><span class="string">此配置选项也可用于防止在Linux上重用inode的Filebeat问题</span></span><br><span class="line"><span class="string">clean_removed</span> <span class="comment">#启动选项后，如果文件在磁盘上找不到，将从注册表中清除filebeat</span></span><br><span class="line"><span class="string">如果关闭close</span> <span class="string">removed</span> <span class="string">必须关闭clean</span> <span class="string">removed</span></span><br><span class="line"><span class="string">scan_frequency</span> <span class="comment">#prospector检查指定用于收获的路径中的新文件的频率,默认10s</span></span><br><span class="line"><span class="string">tail_files：#如果设置为true，Filebeat从文件尾开始监控文件新增内容，把新增的每一行文件作为一个事件依次发送，</span></span><br><span class="line"><span class="string">而不是从文件开始处重新发送所有内容。</span></span><br><span class="line"><span class="string">symlinks：#符号链接选项允许Filebeat除常规文件外,可以收集符号链接。收集符号链接时，即使报告了符号链接的路径，</span></span><br><span class="line"><span class="string">Filebeat也会打开并读取原始文件。</span></span><br><span class="line"><span class="string">backoff：</span> <span class="comment">#backoff选项指定Filebeat如何积极地抓取新文件进行更新。默认1s，backoff选项定义Filebeat在达到EOF之后</span></span><br><span class="line"><span class="string">再次检查文件之间等待的时间。</span></span><br><span class="line"><span class="string">max_backoff：</span> <span class="comment">#在达到EOF之后再次检查文件之前Filebeat等待的最长时间</span></span><br><span class="line"><span class="string">backoff_factor：</span> <span class="comment">#指定backoff尝试等待时间几次，默认是2</span></span><br><span class="line"><span class="string">harvester_limit：#harvester_limit选项限制一个prospector并行启动的harvester数量，直接影响文件打开数</span></span><br><span class="line"></span><br><span class="line"><span class="string">tags</span> <span class="comment">#列表中添加标签，用过过滤，例如：tags: [&quot;json&quot;]</span></span><br><span class="line"><span class="string">fields</span> <span class="comment">#可选字段，选择额外的字段进行输出可以是标量值，元组，字典等嵌套类型</span></span><br><span class="line"><span class="string">默认在sub-dictionary位置</span></span><br><span class="line"><span class="attr">filebeat.inputs:</span></span><br><span class="line"><span class="attr">fields:</span></span><br><span class="line"><span class="attr">app_id:</span> <span class="string">query_engine_12</span></span><br><span class="line"><span class="string">fields_under_root</span> <span class="comment">#如果值为ture，那么fields存储在输出文档的顶级位置</span></span><br><span class="line"></span><br><span class="line"><span class="string">multiline.pattern</span> <span class="comment">#必须匹配的regexp模式</span></span><br><span class="line"><span class="string">multiline.negate</span> <span class="comment">#定义上面的模式匹配条件的动作是 否定的，默认是false</span></span><br><span class="line"><span class="string">假如模式匹配条件&#x27;^b&#x27;，默认是false模式，表示讲按照模式匹配进行匹配</span> <span class="string">将不是以b开头的日志行进行合并</span></span><br><span class="line"><span class="string">如果是true，表示将不以b开头的日志行进行合并</span></span><br><span class="line"><span class="string">multiline.match</span> <span class="comment"># 指定Filebeat如何将匹配行组合成事件,在之前或者之后，取决于上面所指定的negate</span></span><br><span class="line"><span class="string">multiline.max_lines</span> <span class="comment">#可以组合成一个事件的最大行数，超过将丢弃，默认500</span></span><br><span class="line"><span class="string">multiline.timeout</span> <span class="comment">#定义超时时间，如果开始一个新的事件在超时时间内没有发现匹配，也将发送日志，默认是5smax_procs #设置可以同时执行的最大CPU数。默认值为系统中可用的逻辑CPU的数量。name #为该filebeat指定名字，默认为主机的hostname</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Kibana/Kibana%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -846,6 +778,74 @@
 
       
           <h1 id="logStash"><a href="#logStash" class="headerlink" title="logStash"></a>logStash</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>windows 下指定文件路径时，必须手动改<code>\</code>为<code>/</code>，否则文件无法正常读取。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/26/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/Filebeat/Filebeat%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%B8%A9%E5%9D%91/" class="post-title-link" itemprop="url">Filebeat 部署与踩坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-26 23:20:19 / Modified: 14:01:48" itemprop="dateCreated datePublished" datetime="2022-12-26T23:20:19+08:00">2022-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">ELK日志采集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Filebeat-部署与踩坑"><a href="#Filebeat-部署与踩坑" class="headerlink" title="Filebeat 部署与踩坑"></a>Filebeat 部署与踩坑</h1><h2 id="模板配置文件"><a href="#模板配置文件" class="headerlink" title="模板配置文件"></a>模板配置文件</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">log</span> <span class="comment">#input类型为log</span></span><br><span class="line"><span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#表示是该log类型配置生效</span></span><br><span class="line"><span class="string">paths：</span>     <span class="comment">#指定要监控的日志，目前按照Go语言的glob函数处理。没有对配置目录做递归处理，比如配置的如果是：- /var/log/* /*.log  #则只会去/var/log目录的所有子目录中寻找以&quot;.log&quot;结尾的文件，而不会寻找/var/log目录下以&quot;.log&quot;结尾的文件。</span></span><br><span class="line"><span class="attr">recursive_glob.enabled:</span> <span class="comment">#启用全局递归模式，例如/foo/**包括/foo, /foo/*, /foo/*/*</span></span><br><span class="line"><span class="string">encoding：#指定被监控的文件的编码类型，使用plain和utf-8都是可以处理中文日志的</span></span><br><span class="line"><span class="attr">exclude_lines:</span> [<span class="string">&#x27;^DBG&#x27;</span>] <span class="comment">#不包含匹配正则的行</span></span><br><span class="line"><span class="attr">include_lines:</span> [<span class="string">&#x27;^ERR&#x27;</span>, <span class="string">&#x27;^WARN&#x27;</span>]  <span class="comment">#包含匹配正则的行</span></span><br><span class="line"><span class="attr">harvester_buffer_size:</span> <span class="number">16384</span> <span class="comment">#每个harvester在获取文件时使用的缓冲区的字节大小</span></span><br><span class="line"><span class="attr">max_bytes:</span> <span class="number">10485760</span> <span class="comment">#单个日志消息可以拥有的最大字节数。max_bytes之后的所有字节都被丢弃而不发送。默认值为10MB (10485760)</span></span><br><span class="line"><span class="attr">exclude_files:</span> [<span class="string">&#x27;\.gz$&#x27;</span>]  <span class="comment">#用于匹配希望Filebeat忽略的文件的正则表达式列表</span></span><br><span class="line"><span class="attr">ingore_older:</span> <span class="number">0</span> <span class="comment">#默认为0，表示禁用，可以配置2h，2m等，注意ignore_older必须大于close_inactive的值.表示忽略超过设置值未更新的文件或者文件从来没有被harvester收集</span></span><br><span class="line"><span class="string">close_*</span> <span class="comment">#close_ *配置选项用于在特定标准或时间之后关闭harvester。 关闭harvester意味着关闭文件处理程序。 如果在harvester关闭后文件被更新，则在scan_frequency过后，文件将被重新拾取。 但是，如果在harvester关闭时移动或删除文件，Filebeat将无法再次接收文件</span></span><br><span class="line"><span class="string">，并且harvester未读取的任何数据都将丢失。</span></span><br><span class="line"><span class="string">close_inactive</span>  <span class="comment">#启动选项时，如果在制定时间没有被读取，将关闭文件句柄</span></span><br><span class="line"><span class="string">读取的最后一条日志定义为下一次读取的起始点，而不是基于文件的修改时间</span></span><br><span class="line"><span class="string">如果关闭的文件发生变化，一个新的harverster将在scan_frequency运行后被启动</span></span><br><span class="line"><span class="string">建议至少设置一个大于读取日志频率的值，配置多个prospector来实现针对不同更新速度的日志文件</span></span><br><span class="line"><span class="string">使用内部时间戳机制，来反映记录日志的读取，每次读取到最后一行日志时开始倒计时使用2h</span> <span class="string">5m</span> <span class="string">来表示</span></span><br><span class="line"><span class="string">close_rename</span> <span class="comment">#当选项启动，如果文件被重命名和移动，filebeat关闭文件的处理读取</span></span><br><span class="line"><span class="string">close_removed</span> <span class="comment">#当选项启动，文件被删除时，filebeat关闭文件的处理读取这个选项启动后，必须启动clean_removed</span></span><br><span class="line"><span class="string">close_eof</span> <span class="comment">#适合只写一次日志的文件，然后filebeat关闭文件的处理读取</span></span><br><span class="line"><span class="string">close_timeout</span> <span class="comment">#当选项启动时，filebeat会给每个harvester设置预定义时间，不管这个文件是否被读取，达到设定时间后，将被关闭</span></span><br><span class="line"><span class="string">close_timeout</span> <span class="string">不能等于ignore_older,会导致文件更新时，不会被读取如果output一直没有输出日志事件，这个timeout是不会被启动的，</span></span><br><span class="line"><span class="string">至少要要有一个事件发送，然后haverter将被关闭</span></span><br><span class="line"><span class="string">设置0</span> <span class="string">表示不启动</span></span><br><span class="line"><span class="string">clean_inactived</span> <span class="comment">#从注册表文件中删除先前收获的文件的状态</span></span><br><span class="line"><span class="string">设置必须大于ignore_older+scan_frequency，以确保在文件仍在收集时没有删除任何状态</span></span><br><span class="line"><span class="string">配置选项有助于减小注册表文件的大小，特别是如果每天都生成大量的新文件</span></span><br><span class="line"><span class="string">此配置选项也可用于防止在Linux上重用inode的Filebeat问题</span></span><br><span class="line"><span class="string">clean_removed</span> <span class="comment">#启动选项后，如果文件在磁盘上找不到，将从注册表中清除filebeat</span></span><br><span class="line"><span class="string">如果关闭close</span> <span class="string">removed</span> <span class="string">必须关闭clean</span> <span class="string">removed</span></span><br><span class="line"><span class="string">scan_frequency</span> <span class="comment">#prospector检查指定用于收获的路径中的新文件的频率,默认10s</span></span><br><span class="line"><span class="string">tail_files：#如果设置为true，Filebeat从文件尾开始监控文件新增内容，把新增的每一行文件作为一个事件依次发送，</span></span><br><span class="line"><span class="string">而不是从文件开始处重新发送所有内容。</span></span><br><span class="line"><span class="string">symlinks：#符号链接选项允许Filebeat除常规文件外,可以收集符号链接。收集符号链接时，即使报告了符号链接的路径，</span></span><br><span class="line"><span class="string">Filebeat也会打开并读取原始文件。</span></span><br><span class="line"><span class="string">backoff：</span> <span class="comment">#backoff选项指定Filebeat如何积极地抓取新文件进行更新。默认1s，backoff选项定义Filebeat在达到EOF之后</span></span><br><span class="line"><span class="string">再次检查文件之间等待的时间。</span></span><br><span class="line"><span class="string">max_backoff：</span> <span class="comment">#在达到EOF之后再次检查文件之前Filebeat等待的最长时间</span></span><br><span class="line"><span class="string">backoff_factor：</span> <span class="comment">#指定backoff尝试等待时间几次，默认是2</span></span><br><span class="line"><span class="string">harvester_limit：#harvester_limit选项限制一个prospector并行启动的harvester数量，直接影响文件打开数</span></span><br><span class="line"></span><br><span class="line"><span class="string">tags</span> <span class="comment">#列表中添加标签，用过过滤，例如：tags: [&quot;json&quot;]</span></span><br><span class="line"><span class="string">fields</span> <span class="comment">#可选字段，选择额外的字段进行输出可以是标量值，元组，字典等嵌套类型</span></span><br><span class="line"><span class="string">默认在sub-dictionary位置</span></span><br><span class="line"><span class="attr">filebeat.inputs:</span></span><br><span class="line"><span class="attr">fields:</span></span><br><span class="line"><span class="attr">app_id:</span> <span class="string">query_engine_12</span></span><br><span class="line"><span class="string">fields_under_root</span> <span class="comment">#如果值为ture，那么fields存储在输出文档的顶级位置</span></span><br><span class="line"></span><br><span class="line"><span class="string">multiline.pattern</span> <span class="comment">#必须匹配的regexp模式</span></span><br><span class="line"><span class="string">multiline.negate</span> <span class="comment">#定义上面的模式匹配条件的动作是 否定的，默认是false</span></span><br><span class="line"><span class="string">假如模式匹配条件&#x27;^b&#x27;，默认是false模式，表示讲按照模式匹配进行匹配</span> <span class="string">将不是以b开头的日志行进行合并</span></span><br><span class="line"><span class="string">如果是true，表示将不以b开头的日志行进行合并</span></span><br><span class="line"><span class="string">multiline.match</span> <span class="comment"># 指定Filebeat如何将匹配行组合成事件,在之前或者之后，取决于上面所指定的negate</span></span><br><span class="line"><span class="string">multiline.max_lines</span> <span class="comment">#可以组合成一个事件的最大行数，超过将丢弃，默认500</span></span><br><span class="line"><span class="string">multiline.timeout</span> <span class="comment">#定义超时时间，如果开始一个新的事件在超时时间内没有发现匹配，也将发送日志，默认是5smax_procs #设置可以同时执行的最大CPU数。默认值为系统中可用的逻辑CPU的数量。name #为该filebeat指定名字，默认为主机的hostname</span></span><br></pre></td></tr></table></figure>
 
       
     </div>

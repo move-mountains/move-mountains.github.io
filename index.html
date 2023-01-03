@@ -219,11 +219,11 @@
 <li><p>在 HKEY_CURRENT_USER\SOFTWARE\ 下找到  Typora 目录。</p>
 </li>
 </ol>
-<p><img src="/image-20221228165410190.png" alt="image-20221228165410190"></p>
+<p><img src="/2022/12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228165410190.png" alt="image-20221228165410190"></p>
 <ol start="3">
 <li>右键注册表这边的 Typora 目录，打开 Typora 权限设置。将权限修改为拒绝（可以把所有用户访问的权限都设置成拒绝)。</li>
 </ol>
-<p><img src="/image-20221228165634806.png" alt="image-20221228165634806"></p>
+<p><img src="/2022/12/30/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/Typora%E5%85%8D%E8%B4%B9%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/image-20221228165634806.png" alt="image-20221228165634806"></p>
 <p>设置完成后，Typora 就可以正常启动了。</p>
 
       
@@ -572,7 +572,7 @@
 <p>具体操作就是通过 typora 打开 md 文件，然后设置文章的图片根目录。将其修改为资源文件夹。</p>
 <p>（格式 -&gt; 图样 -&gt; 设置图片根目录 -&gt; 选中同名资源文件夹）</p>
 <p>完成后，typora 会在文章抬头出现这样一行内容：<code>typora-root-url: Hexo解决图片无法正常显示的问题</code></p>
-<p><img src="/image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
+<p><img src="/2022/12/29/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/image-20221229172022149-16723056247021.png" alt="image-20221229172022149-16723056247021"></p>
 <p>这个的逻辑主要就是将指定的文件夹视作图片的根目录（原本肯定是 md 文件所在的路径），等于是修改了 md 文件渲染的规则，目前只有 typora  能简单做到对单篇文章的快速修改图片根目录。</p>
 <p>所以此后，图片文件与 md 文件可以视作放在一个文件夹里，本地与远程图片读取可兼容。</p>
 <blockquote>
@@ -581,6 +581,144 @@
 </blockquote>
 <h3 id="更简便设置文章图片根目录的方法"><a href="#更简便设置文章图片根目录的方法" class="headerlink" title="更简便设置文章图片根目录的方法"></a>更简便设置文章图片根目录的方法</h3><p>可以利用 hexo 的模板文件，在模板的开头直接加上这么一行:<code>typora-root-url:&#123;&#123; title &#125;&#125;</code></p>
 <p>这样以后通过<code>hexo new 文章</code>的方式，生成出来的 md 文件将自动设置好对应的图片根路径。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Hexo 搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-12-27 23:17:11" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-12-29 11:07:39" itemprop="dateModified" datetime="2022-12-29T11:07:39+08:00">2022-12-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hexo-搭建"><a href="#Hexo-搭建" class="headerlink" title="Hexo 搭建"></a>Hexo 搭建</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="安装-Hexo-的前置软件"><a href="#安装-Hexo-的前置软件" class="headerlink" title="安装 Hexo 的前置软件"></a>安装 Hexo 的前置软件</h2><ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装好上述两项以后，打开 cmd，执行 npm 命令。<br>不需要刻意找文件夹， 只是安装 hexo 的安装包，并非直接建立应用网站。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="执行-Hexo-命令"><a href="#执行-Hexo-命令" class="headerlink" title="执行 Hexo 命令"></a>执行 Hexo 命令</h3><p>可以将 Hexo 的对应路径写入环境变量 PATH 里，之后就可以直接使用 hexo &lt;command&gt;</p>
+<h2 id="Hexo-解压并建站"><a href="#Hexo-解压并建站" class="headerlink" title="Hexo 解压并建站"></a>Hexo 解压并建站</h2><p>上述步骤仅将 Hexo 下载下来，还需要执行 Hexo 的命令进行初始化建站。<br>指定一个文件夹，执行下面的命令， Hexo 将在指定的文件夹内新建所需的文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h3 id="部分文件夹与文件用途的简介"><a href="#部分文件夹与文件用途的简介" class="headerlink" title="部分文件夹与文件用途的简介"></a>部分文件夹与文件用途的简介</h3><ul>
+<li><strong>_config.yml</strong>: 网站的配置信息。大部分配置参数都在此处设置。</li>
+<li>scaffolds: 模板文件夹，通过<code>hexo new page xxx</code>方式新建文章时，Hexo 会根据 scaffolds 里的内容来生成默认内容(时间戳，用户名，标签、分类、默认字体等)。</li>
+<li>source: 资源文件夹，所有的文章的源文件都在这里。除<code>_posts</code>文件夹之外，开头命名为<code>_</code>(下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</li>
+<li>themes: 主题文件夹，Hexo 会根据主题来生成静态页面，可以理解成不同的 css 包。</li>
+</ul>
+<h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p>新建文章可以直接在 source 文件夹内新建文件（建子文件夹再建文件也可以）。或者通过命令新建，通过命令的方式可以使用模板。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [Scaffold] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以<code>hexo new photo &quot;My Gallery&quot;</code>这一命令为例，Hexo 会在<code>scaffold</code>文件夹内寻找<code>photo.md</code>，并根据其中的内容建立文章。</p>
+<blockquote>
+<p>大部分情况下，其实直接手动建文件夹建文件就够用了，从 index.html 里复制一下就行。</p>
+</blockquote>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>文章按格式完成后，打开 cmd，执行下列命令，就可以直接访问本地的 Hexo 网站。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>或者也可以简写成<code>hexo s</code>。如果文章及其他配置都正常的话，命令行不会报错，然后就可以用浏览器访问网站了。默认的路径是<code>localhost:4000</code>。</p>
+<h2 id="添加分类与标签"><a href="#添加分类与标签" class="headerlink" title="添加分类与标签"></a>添加分类与标签</h2><p>参考文章: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e17711e44e00">https://www.jianshu.com/p/e17711e44e00</a></p>
+<p>主要用途是类似文件夹，对同一类的内容做归类。分类与标签同理。<br>需要注意的是对同一篇文章，可以有多个标签（不同标签之间平级），但只能归属于一个分类，一篇文章的多个分类会被嵌套（类似一个文件只能归属于一个文件夹）。</p>
+<h3 id="创建分类"><a href="#创建分类" class="headerlink" title="创建分类"></a>创建分类</h3><h4 id="生成“分类”页并添加type属性"><a href="#生成“分类”页并添加type属性" class="headerlink" title="生成“分类”页并添加type属性"></a>生成“分类”页并添加<code>type</code>属性</h4><p>命令行下进入博客所在的文件夹，执行命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<p>成功后会在博客文件夹下生成新的文件夹，生成的文件夹名称由<code>_config.yml</code>文件中的<code>category_dir</code>这一项所定义，默认的文件夹名称是<code>categories</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/Documents/blog/source/categories/index.md</span><br></pre></td></tr></table></figure>
+
+<p>根据路径找到<code>categories</code>，打开里面自动生成的<code>index.html</code>，填入<code>type: categories</code>，并修改第一行的<code>title</code>为”文章分类”。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>title</code>不能与<code>type</code>相同，否则会报错，原因未知</p>
+</blockquote>
+<h4 id="给文章添加categories属性"><a href="#给文章添加categories属性" class="headerlink" title="给文章添加categories属性"></a>给文章添加<code>categories</code>属性</h4><p>打开需要添加分类的文章，为其添加<code>categories</code>属性。下方的<code>categories: redis</code>前端表示添加这篇文章到<code>redis</code>这个分类。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>保存后，该文章就将归属于<code>redis</code>分类，所对应的<code>redis</code>分类将会出现在首页。</p>
+<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p><strong>标签的创建与添加与分类的步骤基本一致。</strong></p>
+<h4 id="生成“标签”页并添加tpye属性"><a href="#生成“标签”页并添加tpye属性" class="headerlink" title="生成“标签”页并添加tpye属性"></a>生成“标签”页并添加<code>tpye</code>属性</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p>成功后会有提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/Documents/blog/source/tags/index.md</span><br></pre></td></tr></table></figure>
+
+<p>找到<code>index.html</code>，添加<code>type: &quot;tags&quot;</code>，还需要修改<code>title</code>为”标签”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>title</code>不能与<code>type</code>相同，否则会报错，原因未知</p>
+</blockquote>
+<h4 id="给文章添加tags属性"><a href="#给文章添加tags属性" class="headerlink" title="给文章添加tags属性"></a>给文章添加<code>tags</code>属性</h4><p>打开文章，添加所需的<code>tags</code>属性。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">tags:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>保存后，该文章将拥有<code>redis</code>标签，所对应的<code>redis</code>标签将出现在首页。</p>
+<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
 
       
     </div>
@@ -748,144 +886,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Hexo 搭建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-12-27 23:17:11" itemprop="dateCreated datePublished" datetime="2022-12-27T23:17:11+08:00">2022-12-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-12-29 11:07:39" itemprop="dateModified" datetime="2022-12-29T11:07:39+08:00">2022-12-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hexo-搭建"><a href="#Hexo-搭建" class="headerlink" title="Hexo 搭建"></a>Hexo 搭建</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<h2 id="安装-Hexo-的前置软件"><a href="#安装-Hexo-的前置软件" class="headerlink" title="安装 Hexo 的前置软件"></a>安装 Hexo 的前置软件</h2><ul>
-<li>Node.js</li>
-<li>Git</li>
-</ul>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装好上述两项以后，打开 cmd，执行 npm 命令。<br>不需要刻意找文件夹， 只是安装 hexo 的安装包，并非直接建立应用网站。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行-Hexo-命令"><a href="#执行-Hexo-命令" class="headerlink" title="执行 Hexo 命令"></a>执行 Hexo 命令</h3><p>可以将 Hexo 的对应路径写入环境变量 PATH 里，之后就可以直接使用 hexo &lt;command&gt;</p>
-<h2 id="Hexo-解压并建站"><a href="#Hexo-解压并建站" class="headerlink" title="Hexo 解压并建站"></a>Hexo 解压并建站</h2><p>上述步骤仅将 Hexo 下载下来，还需要执行 Hexo 的命令进行初始化建站。<br>指定一个文件夹，执行下面的命令， Hexo 将在指定的文件夹内新建所需的文件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<h3 id="部分文件夹与文件用途的简介"><a href="#部分文件夹与文件用途的简介" class="headerlink" title="部分文件夹与文件用途的简介"></a>部分文件夹与文件用途的简介</h3><ul>
-<li><strong>_config.yml</strong>: 网站的配置信息。大部分配置参数都在此处设置。</li>
-<li>scaffolds: 模板文件夹，通过<code>hexo new page xxx</code>方式新建文章时，Hexo 会根据 scaffolds 里的内容来生成默认内容(时间戳，用户名，标签、分类、默认字体等)。</li>
-<li>source: 资源文件夹，所有的文章的源文件都在这里。除<code>_posts</code>文件夹之外，开头命名为<code>_</code>(下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</li>
-<li>themes: 主题文件夹，Hexo 会根据主题来生成静态页面，可以理解成不同的 css 包。</li>
-</ul>
-<h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p>新建文章可以直接在 source 文件夹内新建文件（建子文件夹再建文件也可以）。或者通过命令新建，通过命令的方式可以使用模板。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [Scaffold] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>以<code>hexo new photo &quot;My Gallery&quot;</code>这一命令为例，Hexo 会在<code>scaffold</code>文件夹内寻找<code>photo.md</code>，并根据其中的内容建立文章。</p>
-<blockquote>
-<p>大部分情况下，其实直接手动建文件夹建文件就够用了，从 index.html 里复制一下就行。</p>
-</blockquote>
-<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>文章按格式完成后，打开 cmd，执行下列命令，就可以直接访问本地的 Hexo 网站。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>或者也可以简写成<code>hexo s</code>。如果文章及其他配置都正常的话，命令行不会报错，然后就可以用浏览器访问网站了。默认的路径是<code>localhost:4000</code>。</p>
-<h2 id="添加分类与标签"><a href="#添加分类与标签" class="headerlink" title="添加分类与标签"></a>添加分类与标签</h2><p>参考文章: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e17711e44e00">https://www.jianshu.com/p/e17711e44e00</a></p>
-<p>主要用途是类似文件夹，对同一类的内容做归类。分类与标签同理。<br>需要注意的是对同一篇文章，可以有多个标签（不同标签之间平级），但只能归属于一个分类，一篇文章的多个分类会被嵌套（类似一个文件只能归属于一个文件夹）。</p>
-<h3 id="创建分类"><a href="#创建分类" class="headerlink" title="创建分类"></a>创建分类</h3><h4 id="生成“分类”页并添加type属性"><a href="#生成“分类”页并添加type属性" class="headerlink" title="生成“分类”页并添加type属性"></a>生成“分类”页并添加<code>type</code>属性</h4><p>命令行下进入博客所在的文件夹，执行命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-
-<p>成功后会在博客文件夹下生成新的文件夹，生成的文件夹名称由<code>_config.yml</code>文件中的<code>category_dir</code>这一项所定义，默认的文件夹名称是<code>categories</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/Documents/blog/source/categories/index.md</span><br></pre></td></tr></table></figure>
-
-<p>根据路径找到<code>categories</code>，打开里面自动生成的<code>index.html</code>，填入<code>type: categories</code>，并修改第一行的<code>title</code>为”文章分类”。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<code>title</code>不能与<code>type</code>相同，否则会报错，原因未知</p>
-</blockquote>
-<h4 id="给文章添加categories属性"><a href="#给文章添加categories属性" class="headerlink" title="给文章添加categories属性"></a>给文章添加<code>categories</code>属性</h4><p>打开需要添加分类的文章，为其添加<code>categories</code>属性。下方的<code>categories: redis</code>前端表示添加这篇文章到<code>redis</code>这个分类。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>保存后，该文章就将归属于<code>redis</code>分类，所对应的<code>redis</code>分类将会出现在首页。</p>
-<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E5%88%86%E7%B1%BB.png" alt="分类"></p>
-<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p><strong>标签的创建与添加与分类的步骤基本一致。</strong></p>
-<h4 id="生成“标签”页并添加tpye属性"><a href="#生成“标签”页并添加tpye属性" class="headerlink" title="生成“标签”页并添加tpye属性"></a>生成“标签”页并添加<code>tpye</code>属性</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-
-<p>成功后会有提示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/Documents/blog/source/tags/index.md</span><br></pre></td></tr></table></figure>
-
-<p>找到<code>index.html</code>，添加<code>type: &quot;tags&quot;</code>，还需要修改<code>title</code>为”标签”</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<code>title</code>不能与<code>type</code>相同，否则会报错，原因未知</p>
-</blockquote>
-<h4 id="给文章添加tags属性"><a href="#给文章添加tags属性" class="headerlink" title="给文章添加tags属性"></a>给文章添加<code>tags</code>属性</h4><p>打开文章，添加所需的<code>tags</code>属性。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: redis 部署</span><br><span class="line">date: 2022-12-26 23:20:19</span><br><span class="line">categories:</span><br><span class="line"> - redis</span><br><span class="line">tags:</span><br><span class="line"> - redis</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>保存后，该文章将拥有<code>redis</code>标签，所对应的<code>redis</code>标签将出现在首页。</p>
-<p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/%E6%A0%87%E7%AD%BE.jpg" alt="标签"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://move-mountains.github.io/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -945,7 +945,7 @@
 <p>对应的仓库建立完成后，应该是可以直接访问 GitHub Page 的默认网站的，网站路径:<strong>用户名.github.io</strong> 。</p>
 <p><img src="/2022/12/27/Hexo%E6%90%AD%E5%BB%BA/Hexo%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2/GitHub%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.jpg" alt="GitHub新建仓库"></p>
 <h2 id="修改-Hexo-配置，设置上传到-GitHub-的路径"><a href="#修改-Hexo-配置，设置上传到-GitHub-的路径" class="headerlink" title="修改 Hexo 配置，设置上传到 GitHub 的路径"></a>修改 Hexo 配置，设置上传到 GitHub 的路径</h2><p>打开 Hexo 的配置文件<code>_config.yml</code>,找到<code>deploy</code>这一块，配置上新建的 GitHub 仓库的 url。</p>
-<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
+<p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:move-mountains&#x2F;move-mountains.github.io.git<br>  branch: master</p>
 <blockquote>
 <p>具体上传到哪个分支、 GitHub Page 怎么选择分支还没研究过</p>
 </blockquote>
